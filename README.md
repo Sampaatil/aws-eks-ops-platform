@@ -1,0 +1,127 @@
+# OpsFlow — AWS EKS Operations Platform
+
+OpsFlow is a production-oriented DevOps portfolio project designed
+to demonstrate containerized application delivery and operations
+on Amazon EKS.
+
+## Project Goals
+
+The project demonstrates:
+
+- Docker containerization
+- Kubernetes orchestration
+- Amazon EKS
+- Amazon ECR
+- Terraform infrastructure as code
+- Helm application packaging
+- GitHub Actions CI/CD
+- AWS IAM and OIDC
+- AWS Load Balancer Controller
+- Amazon RDS PostgreSQL
+- AWS Secrets Manager
+- Amazon CloudWatch
+- Prometheus and Grafana
+- Horizontal Pod Autoscaling
+- Container and IaC security scanning
+- Production troubleshooting
+- AWS cost optimization
+
+## Application
+
+OpsFlow is a lightweight incident-management application consisting
+of:
+
+- React frontend
+- Node.js/Express REST API
+- PostgreSQL database
+
+The application is intentionally simple. The primary purpose of the
+project is to demonstrate infrastructure, deployment, reliability,
+security and operational practices.
+
+## Architecture
+
+Architecture will evolve throughout the project.
+
+Initial application flow:
+
+Browser -> React -> Express API -> PostgreSQL
+
+Target AWS flow:
+
+Internet
+-> Application Load Balancer
+-> Amazon EKS
+-> Kubernetes Services/Pods
+-> Amazon RDS PostgreSQL
+
+Container images are stored in Amazon ECR.
+
+Infrastructure is provisioned using Terraform.
+
+Application deployments are automated through GitHub Actions and
+packaged using Helm.
+
+## Repository Structure
+
+frontend/        React application
+backend/         Node.js REST API
+infrastructure/  Terraform infrastructure
+kubernetes/      Kubernetes manifests
+helm/            Helm charts
+monitoring/      Observability configuration
+scripts/         Operational scripts
+docs/            Architecture and operational documentation
+
+## Current Status
+
+Phase 1 — Application Foundation
+
+- [x] Repository structure
+- [x] React frontend
+- [x] Express API
+- [x] Health endpoint
+- [x] Readiness endpoint
+- [x] PostgreSQL schema
+- [x] Graceful shutdown
+- [x] Basic automated tests
+- [ ] Docker
+- [ ] Kubernetes
+- [ ] AWS infrastructure
+- [ ] EKS
+- [ ] CI/CD
+- [ ] Observability
+- [ ] Security
+- [ ] Production incident simulations
+
+## API Endpoints
+
+GET /health
+
+GET /ready
+
+GET /api/incidents
+
+GET /api/incidents/:id
+
+POST /api/incidents
+
+PATCH /api/incidents/:id/status
+
+DELETE /api/incidents/:id
+
+## Security
+
+Secrets and credentials must never be committed to this repository.
+
+Local configuration uses environment variables.
+
+AWS workloads will use IAM roles and AWS Secrets Manager where
+appropriate.
+
+## Cost
+
+Phase 1 creates no AWS resources and incurs no AWS infrastructure cost.
+
+AWS resource costs and cleanup procedures will be documented before
+billable resources are provisioned.
