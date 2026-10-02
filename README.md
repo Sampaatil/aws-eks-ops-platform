@@ -125,3 +125,51 @@ Phase 1 creates no AWS resources and incurs no AWS infrastructure cost.
 
 AWS resource costs and cleanup procedures will be documented before
 billable resources are provisioned.
+
+## Phase 2 — Containerization
+
+The application is containerized using Docker and orchestrated locally
+using Docker Compose.
+
+### Services
+
+- Frontend — React production build served through Nginx
+- Backend — Node.js/Express REST API
+- Database — PostgreSQL
+
+### Local Architecture
+
+Browser
+-> Nginx frontend
+-> Express backend
+-> PostgreSQL
+
+Only the frontend is exposed to the host.
+
+Internal communication uses Docker service discovery.
+
+### Container Security
+
+The backend application runs as a non-root user.
+
+Sensitive local configuration is provided through environment
+variables and is excluded from Git and Docker build contexts.
+
+### Health Checks
+
+Backend:
+
+GET /health
+
+verifies application process health.
+
+GET /ready
+
+verifies that the application can connect to PostgreSQL.
+
+### Start
+
+Create the local environment file:
+
+```bash
+cp .env.example .env
