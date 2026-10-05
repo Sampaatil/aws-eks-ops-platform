@@ -173,3 +173,80 @@ Create the local environment file:
 
 ```bash
 cp .env.example .env
+
+## Phase 3 — Kubernetes
+
+OpsFlow now runs on a local Kubernetes cluster using kind.
+
+### Kubernetes Resources
+
+The application uses:
+
+- Namespace
+- Deployments
+- ReplicaSets
+- Pods
+- ClusterIP Services
+- NodePort Service
+- ConfigMaps
+- Kubernetes Secret
+- PersistentVolumeClaim
+- Liveness probes
+- Readiness probes
+- CPU and memory requests
+- CPU and memory limits
+- Rolling updates
+
+### Architecture
+
+Browser
+-> NodePort
+-> Frontend Service
+-> Frontend Pods
+-> Backend Service
+-> Backend Pods
+-> PostgreSQL Service
+-> PostgreSQL Pod
+-> PersistentVolumeClaim
+
+### Application Namespace
+
+All application workloads run in:
+
+`opsflow`
+
+### Health Model
+
+`/health`
+
+is used for application liveness.
+
+`/ready`
+
+checks PostgreSQL connectivity and determines whether backend Pods
+should receive traffic.
+
+### Local Cluster
+
+The Kubernetes cluster is created using kind.
+
+The locally built application images are loaded into the kind node
+for development.
+
+Production deployment will use Amazon ECR rather than locally loaded
+images.
+
+### Database
+
+PostgreSQL runs inside Kubernetes only for local Kubernetes learning.
+
+The AWS architecture will replace the local PostgreSQL workload with
+Amazon RDS PostgreSQL.
+
+### Production Differences
+
+The local NodePort exposure mechanism is not the target AWS
+architecture.
+
+Amazon EKS will use AWS Load Balancer Controller and an Application
+Load Balancer for application ingress.
