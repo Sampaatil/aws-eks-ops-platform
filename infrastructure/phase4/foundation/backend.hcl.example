@@ -1,0 +1,6 @@
+bucket       = "opsflow-tfstate-REPLACE_ACCOUNT_ID-ap-south-1"
+key          = "opsflow/lab/foundation.tfstate"
+region       = "ap-south-1"
+encrypt      = true
+use_lockfile = true
+allowed_account_ids = ["REPLACE_ACCOUNT_ID"]

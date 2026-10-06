@@ -250,3 +250,13 @@ architecture.
 
 Amazon EKS will use AWS Load Balancer Controller and an Application
 Load Balancer for application ingress.
+
+## Phase 4 — AWS foundation
+
+Terraform provisions an OpsFlow lab VPC across two AZs, four subnets,
+explicit routing, two private ECR repositories, and a scoped ECR publisher
+policy. Foundation state uses a versioned, encrypted S3 backend with native
+lock files. Bootstrap state is local and backed up securely.
+
+Private subnets currently have no internet egress. EKS/RDS/ALB and private
+node outbound connectivity are subsequent phases. See docs/phase4-aws-foundation.md.

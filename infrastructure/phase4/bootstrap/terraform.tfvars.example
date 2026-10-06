@@ -1,0 +1,2 @@
+aws_region = "ap-south-1"
+aws_account_id = "REPLACE_WITH_12_DIGIT_ACCOUNT_ID"
