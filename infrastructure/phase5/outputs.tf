@@ -1,0 +1,11 @@
+output "cluster_name" { value = aws_eks_cluster.main.name }
+output "cluster_endpoint" { value = aws_eks_cluster.main.endpoint }
+output "vpc_id" { value = local.vpc_id }
+output "node_security_group_id" { value = aws_security_group.nodes.id }
+output "rds_address" { value = aws_db_instance.main.address }
+output "rds_identifier" { value = aws_db_instance.main.identifier }
+output "rds_master_secret_arn" { value = aws_db_instance.main.master_user_secret[0].secret_arn }
+output "lbc_role_arn" { value = aws_iam_role.lbc.arn }
+output "ecr_repository_urls" { value = data.terraform_remote_state.foundation.outputs.ecr_repository_urls }
+output "public_subnet_ids" { value = local.public_ids }
+output "final_snapshot_identifier" { value = var.final_snapshot_identifier }

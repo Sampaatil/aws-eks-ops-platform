@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opsflow-config
+  namespace: opsflow
+data:
+  NODE_ENV: production
+  PORT: "3000"
+  DB_HOST: "__RDS_HOST__"
+  DB_PORT: "5432"
+  DB_NAME: opsflow
+  DB_USER: opsflow_app
+  DB_SSL: "true"
+  DB_SSL_CA_PATH: /etc/rds-ca/global-bundle.pem

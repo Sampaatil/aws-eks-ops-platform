@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: opsflow-init-schema
+  namespace: opsflow
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 300
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      containers:
+        - name: psql
+          image: postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea
+          command: [sh, -ec]
+          args:
+            - |
+              psql -v ON_ERROR_STOP=1 -f /sql/init.sql
+              psql -v ON_ERROR_STOP=1 -c "SELECT current_user, ssl FROM pg_stat_ssl WHERE pid=pg_backend_pid();"
+          env:
+            - name: PGHOST
+              valueFrom: {configMapKeyRef: {name: opsflow-config, key: DB_HOST}}
+            - {name: PGPORT, value: "5432"}
+            - {name: PGDATABASE, value: opsflow}
+            - {name: PGUSER, value: opsflow_app}
+            - {name: PGSSLMODE, value: verify-full}
+            - {name: PGSSLROOTCERT, value: /etc/rds-ca/global-bundle.pem}
+            - name: PGPASSWORD
+              valueFrom: {secretKeyRef: {name: opsflow-db-secret, key: DB_PASSWORD}}
+          resources:
+            requests: {cpu: 50m, memory: 64Mi}
+            limits: {cpu: 200m, memory: 128Mi}
+          volumeMounts:
+            - {name: sql, mountPath: /sql, readOnly: true}
+            - {name: ca, mountPath: /etc/rds-ca, readOnly: true}
+      volumes:
+        - name: sql
+          configMap: {name: opsflow-schema}
+        - name: ca
+          configMap: {name: rds-ca}
+

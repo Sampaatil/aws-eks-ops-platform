@@ -260,3 +260,72 @@ lock files. Bootstrap state is local and backed up securely.
 
 Private subnets currently have no internet egress. EKS/RDS/ALB and private
 node outbound connectivity are subsequent phases. See docs/phase4-aws-foundation.md.
+
+# Phase 5 — EKS Deployment Results
+
+## Environment
+
+- AWS Region: ap-south-1
+- EKS Cluster: opsflow-lab
+- Namespace: opsflow
+- AWS Account: Masked in public documentation
+- Worker Nodes: 2 managed AL2023 nodes
+- Database: Private Amazon RDS PostgreSQL
+- Ingress: AWS Application Load Balancer
+- Controller Identity: EKS Pod Identity
+
+## Deployment Evidence
+
+- EKS Kubernetes Version: Pending verification
+- Node Readiness: Pending final verification
+- Backend Image Digest: Pending final release verification
+- Frontend Image Digest: Pending final verification
+- Source Commit: Pending final commit
+- Backend Deployment Revision: Pending final verification
+
+## Application Validation
+
+- Backend `/health`: Previously verified
+- Backend `/ready`: Previously verified
+- Incident API POST: Previously verified
+- Incident API GET: Previously verified
+- RDS Persistence: Previously verified
+
+## Database Security
+
+- RDS Public Accessibility: Pending final verification
+- Storage Encryption: Pending final verification
+- PostgreSQL TLS Certificate Verification: Previously validated
+- Separate Application Database User: Configured
+- Automated Backup Retention: Pending verification
+
+## Release Security
+
+- ECR Image Scan: Completed
+- Previous Finding: CVE-2026-85091, HIGH, zlib 1.3.2-r0
+- Patched Image Scan: Pending verification
+- Image Digest Pinning: Configured
+
+## Operational Experiments
+
+- Pod Replacement: Pending evidence
+- Rolling Release: Pending final verification
+- Rollback: Pending verification
+- RDS Restore Test: Not performed
+
+## Cost and Teardown
+
+- Cost Observation Window: Pending billing evidence
+- Actual Observed Cost: Pending
+- Teardown: Not performed
+- Remaining Billable Resources: EKS, EC2 workers, ALB, RDS and associated resources require cleanup
+
+## Known Production Gaps
+
+- Public worker nodes
+- HTTP browser transport
+- Single-AZ RDS
+- Kubernetes-managed application database secret
+- No application authentication
+- No tested database restoration
+- No complete production monitoring and alerting stack

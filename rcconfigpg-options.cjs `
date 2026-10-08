@@ -1,0 +1,26 @@
+[1mdiff --git a/backend/src/db/pool.js b/backend/src/db/pool.js[m
+[1mindex e0eae1b..ed2ec8a 100644[m
+[1m--- a/backend/src/db/pool.js[m
+[1m+++ b/backend/src/db/pool.js[m
+[36m@@ -1,19 +1,7 @@[m
+ const { Pool } = require("pg");[m
+[31m-const config = require("../config/config");[m
+[32m+[m[32mconst { buildPgOptions } = require("../config/pg-options.cjs");[m
+ [m
+[31m-const pool = new Pool({[m
+[31m-  host: config.database.host,[m
+[31m-  port: config.database.port,[m
+[31m-  database: config.database.database,[m
+[31m-  user: config.database.user,[m
+[31m-  password: config.database.password,[m
+[31m-[m
+[31m-  max: 10,[m
+[31m-[m
+[31m-  idleTimeoutMillis: 30000,[m
+[31m-[m
+[31m-  connectionTimeoutMillis: 5000,[m
+[31m-});[m
+[32m+[m[32mconst pool = new Pool(buildPgOptions(process.env));[m
+ [m
+ pool.on("error", (error) => {[m
+   console.error("Unexpected PostgreSQL pool error:", error);[m

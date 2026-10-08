@@ -1,0 +1,11 @@
+aws_region = "ap-south-1"
+aws_account_id = "REPLACE_ACCOUNT_ID"
+state_bucket = "opsflow-tfstate-REPLACE_ACCOUNT_ID-ap-south-1"
+admin_principal_arn = "arn:aws:iam::REPLACE_ACCOUNT_ID:role/REPLACE_WITH_ACTUAL_ROLE_PATH"
+admin_ipv4_cidr = "REPLACE_PUBLIC_IPV4/32"
+kubernetes_version = "1.35"
+node_instance_type = "t3.small"
+node_desired_size = 2
+postgres_engine_version = "16"
+db_instance_class = "db.t4g.micro"
+final_snapshot_identifier = "opsflow-lab-final-20261006-run1"

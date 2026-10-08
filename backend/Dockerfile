@@ -17,7 +17,9 @@ WORKDIR /app
 
 # Create dedicated non-root application user with fixed UID/GID.
 # Fixed numeric IDs allow Kubernetes to verify runAsNonRoot.
-RUN addgroup -S -g 10001 opsflow && \
+# Apply available Alpine security updates before dropping privileges.
+RUN apk upgrade --no-cache zlib && \
+    addgroup -S -g 10001 opsflow && \
     adduser -S -D -H -u 10001 -G opsflow opsflow
 
 COPY --from=dependencies /app/node_modules ./node_modules
