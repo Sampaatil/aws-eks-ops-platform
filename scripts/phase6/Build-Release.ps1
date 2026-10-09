@@ -32,7 +32,6 @@ foreach ($App in @('backend','frontend')) {
   $Repo = $Repos.$App
   Invoke-Checked 'docker' @(
     'build',
-    '--pull',
     '--platform', 'linux/amd64',
     '--provenance=false',
     '--sbom=false',
