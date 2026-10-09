@@ -29,16 +29,37 @@ try {
   if ($LASTEXITCODE -ne 0) { throw 'Docker ECR login failed.' }
 } finally { $LoginPassword=$null }
 foreach ($App in @('backend','frontend')) {
-  $Repo = $Repos.$App
-  Invoke-Checked 'docker' @(
-    'build',
-    '--platform', 'linux/amd64',
-    '--provenance=false',
-    '--sbom=false',
-    '--label', "org.opencontainers.image.revision=$Commit",
-    '-t', "${Repo}:$ReleaseId",
-    (Join-Path $RepoRoot $App)
-) | Out-Host
+
+    $Repo = $Repos.$App
+    $Image = "${Repo}:$ReleaseId"
+
+    Write-Host "=================================="
+    Write-Host "Building Docker image: $App"
+    Write-Host "Image: $Image"
+    Write-Host "=================================="
+
+    # Build the Linux AMD64 image
+    Invoke-Checked 'docker' @(
+        'build',
+        '--platform', 'linux/amd64',
+        '--provenance=false',
+        '--sbom=false',
+        '--label', "org.opencontainers.image.revision=$Commit",
+        '-t', $Image,
+        (Join-Path $RepoRoot $App)
+    ) | Out-Host
+
+    Write-Host "Docker build completed: $App"
+
+    # Push the image to Amazon ECR
+    Write-Host "Pushing image to Amazon ECR: $App"
+
+    Invoke-Checked 'docker' @(
+        'push',
+        $Image
+    ) | Out-Host
+
+    Write-Host "ECR push completed: $App"
 }
 $Images = @{}
 $Findings = @{}
