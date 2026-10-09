@@ -69,23 +69,50 @@ foreach ($App in @('backend','frontend')) {
   $Details = Get-JsonResult 'aws' @('ecr','describe-images','--repository-name',$RepoName,'--image-ids',"imageTag=$ReleaseId",'--region',$Region,'--output','json')
   $Digest = $Details.imageDetails[0].imageDigest
   if ($Digest -notmatch '^sha256:[a-f0-9]{64}$') { throw 'Digest lookup failed.' }
-  Write-Host "Starting basic ECR scan: $App $Digest"
+  Write-Host "Checking ECR scan status: $App $Digest"
 
-Invoke-Checked 'aws' @(
-    'ecr', 'start-image-scan',
+$ScanArgs = @(
+    'ecr', 'describe-image-scan-findings',
     '--repository-name', $RepoName,
     '--image-id', "imageDigest=$Digest",
-    '--region', $Region
-) | Out-Null
+    '--region', $Region,
+    '--output', 'json'
+)
 
-Write-Host "Waiting for basic ECR scan: $App"
+$Scan = $null
 
-Invoke-Checked 'aws' @(
-    'ecr', 'wait', 'image-scan-complete',
-    '--repository-name', $RepoName,
-    '--image-id', "imageDigest=$Digest",
-    '--region', $Region
-) | Out-Null
+try {
+    $Scan = Get-JsonResult 'aws' $ScanArgs
+}
+catch {
+    Write-Host "Existing scan results could not be retrieved."
+}
+
+if ($Scan -and $Scan.imageScanStatus.status -eq 'COMPLETE') {
+    Write-Host "Reusing completed ECR scan: $App"
+}
+elseif ($Scan -and $Scan.imageScanStatus.status -eq 'IN_PROGRESS') {
+    Write-Host "ECR scan already running: $App"
+}
+else {
+    Write-Host "No completed scan available. Attempting to start scan: $App"
+
+    Invoke-Checked 'aws' @(
+        'ecr', 'start-image-scan',
+        '--repository-name', $RepoName,
+        '--image-id', "imageDigest=$Digest",
+        '--region', $Region
+    ) | Out-Null
+}
+
+if (-not $Scan -or $Scan.imageScanStatus.status -ne 'COMPLETE') {
+    Invoke-Checked 'aws' @(
+        'ecr', 'wait', 'image-scan-complete',
+        '--repository-name', $RepoName,
+        '--image-id', "imageDigest=$Digest",
+        '--region', $Region
+    ) | Out-Null
+}
   $Scan = Get-JsonResult 'aws' @('ecr','describe-image-scan-findings','--repository-name',$RepoName,'--image-id',"imageDigest=$Digest",'--region',$Region,'--output','json')
   if ($Scan.imageScanStatus.status -ne 'COMPLETE') { throw 'A completed basic scan is required. Enhanced scanning needs its own Inspector-aware gate.' }
   $Counts = $Scan.imageScanFindings.findingSeverityCounts
