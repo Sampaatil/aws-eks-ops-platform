@@ -30,8 +30,16 @@ try {
 } finally { $LoginPassword=$null }
 foreach ($App in @('backend','frontend')) {
   $Repo = $Repos.$App
-  Invoke-Checked 'docker' @('build','--pull','--platform','linux/amd64','--label',"org.opencontainers.image.revision=$Commit",'-t',"${Repo}:$ReleaseId",(Join-Path $RepoRoot $App)) | Out-Host
-  Invoke-Checked 'docker' @('push',"${Repo}:$ReleaseId") | Out-Host
+  Invoke-Checked 'docker' @(
+    'build',
+    '--pull',
+    '--platform', 'linux/amd64',
+    '--provenance=false',
+    '--sbom=false',
+    '--label', "org.opencontainers.image.revision=$Commit",
+    '-t', "${Repo}:$ReleaseId",
+    (Join-Path $RepoRoot $App)
+) | Out-Host
 }
 $Images = @{}
 $Findings = @{}
@@ -41,8 +49,23 @@ foreach ($App in @('backend','frontend')) {
   $Details = Get-JsonResult 'aws' @('ecr','describe-images','--repository-name',$RepoName,'--image-ids',"imageTag=$ReleaseId",'--region',$Region,'--output','json')
   $Digest = $Details.imageDetails[0].imageDigest
   if ($Digest -notmatch '^sha256:[a-f0-9]{64}$') { throw 'Digest lookup failed.' }
-  Write-Host "Waiting for the basic scan: $App $Digest"
-  Invoke-Checked 'aws' @('ecr','wait','image-scan-complete','--repository-name',$RepoName,'--image-id',"imageDigest=$Digest",'--region',$Region) | Out-Null
+  Write-Host "Starting basic ECR scan: $App $Digest"
+
+Invoke-Checked 'aws' @(
+    'ecr', 'start-image-scan',
+    '--repository-name', $RepoName,
+    '--image-id', "imageDigest=$Digest",
+    '--region', $Region
+) | Out-Null
+
+Write-Host "Waiting for basic ECR scan: $App"
+
+Invoke-Checked 'aws' @(
+    'ecr', 'wait', 'image-scan-complete',
+    '--repository-name', $RepoName,
+    '--image-id', "imageDigest=$Digest",
+    '--region', $Region
+) | Out-Null
   $Scan = Get-JsonResult 'aws' @('ecr','describe-image-scan-findings','--repository-name',$RepoName,'--image-id',"imageDigest=$Digest",'--region',$Region,'--output','json')
   if ($Scan.imageScanStatus.status -ne 'COMPLETE') { throw 'A completed basic scan is required. Enhanced scanning needs its own Inspector-aware gate.' }
   $Counts = $Scan.imageScanFindings.findingSeverityCounts
