@@ -20,7 +20,7 @@ RUN npm run build
 # Stage 2: Production web server
 # -------------------------------
 
-FROM nginx:1.28-alpine AS runtime
+FROM public.ecr.aws/docker/library/nginx:1.28-alpine AS runtime
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
