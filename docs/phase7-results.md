@@ -29,3 +29,23 @@ Adopted resources	7
 Images	Existing Phase 6 ECR digests
 Rollout and readiness	Record actual output
 Rollback	No earlier Helm revision exists
+
+## Helm Deployment (Phase 7)
+
+OpsFlow application resources are managed using Helm 3.
+
+- Chart: `helm/opsflow`
+- Release: `opsflow`
+- Namespace: `opsflow`
+- Managed resources: 2 Deployments, 2 Services, 2 ConfigMaps and 1 Ingress
+- Infrastructure: AWS resources remain managed by Terraform
+- External dependencies: RDS, Kubernetes database Secret and RDS CA ConfigMap
+
+### Release Management
+
+- Initial installation: revision 1
+- Configuration upgrade: revision 2
+- Successful rollback: revision 3 (restored revision 1)
+
+See [Phase 7 Helm Guide](docs/phase7-helm.md) and
+[Phase 7 Results](docs/phase7-results.md)
