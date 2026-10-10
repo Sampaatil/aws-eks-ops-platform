@@ -20,7 +20,7 @@ RUN npm run build
 # Stage 2: Production web server
 # -------------------------------
 
-FROM public.ecr.aws/docker/library/nginx:1.28-alpine AS runtime
+FROM public.ecr.aws/docker/library/nginx:1.30.5-alpine3.24 AS runtime
 
 RUN apk upgrade --no-cache
 
