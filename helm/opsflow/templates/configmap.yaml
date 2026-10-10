@@ -1,0 +1,10 @@
+{{- include "opsflow.validate" . }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opsflow-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "opsflow.labels" . | nindent 4 }}
+data:
+  {{- toYaml .Values.config | nindent 2 }}

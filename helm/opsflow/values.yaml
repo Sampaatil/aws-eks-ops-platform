@@ -1,0 +1,45 @@
+{
+  "backend": {
+    "image": "",
+    "replicas": 2,
+    "resources": {
+      "requests": {
+        "cpu": "100m",
+        "memory": "128Mi"
+      },
+      "limits": {
+        "cpu": "500m",
+        "memory": "256Mi"
+      }
+    }
+  },
+  "frontend": {
+    "image": "",
+    "replicas": 2,
+    "resources": {
+      "requests": {
+        "cpu": "50m",
+        "memory": "64Mi"
+      },
+      "limits": {
+        "cpu": "200m",
+        "memory": "128Mi"
+      }
+    }
+  },
+  "config": {
+    "NODE_ENV": "production",
+    "PORT": "3000",
+    "DB_HOST": "",
+    "DB_PORT": "5432",
+    "DB_NAME": "opsflow",
+    "DB_USER": "opsflow_app",
+    "DB_SSL": "true",
+    "DB_SSL_CA_PATH": "/etc/rds-ca/global-bundle.pem"
+  },
+  "nginxConfig": "",
+  "ingress": {
+    "annotations": {},
+    "className": "alb"
+  }
+}

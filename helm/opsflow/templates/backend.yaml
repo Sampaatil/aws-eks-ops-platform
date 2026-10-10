@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "opsflow.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.backend.replicas }}
+  revisionHistoryLimit: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxUnavailable: 0, maxSurge: 1}
+  selector:
+    matchLabels: {app: backend}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/nginx: {{ include (print $.Template.BasePath "/nginx.yaml") . | sha256sum }}
+      labels: {app: backend}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: backend
+          image: {{ .Values.backend.image | quote }}
+          ports: [{name: http, containerPort: 3000}]
+          envFrom: [{configMapRef: {name: opsflow-config}}]
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef: {name: opsflow-db-secret, key: DB_PASSWORD}
+          resources:
+            {{- toYaml .Values.backend.resources | nindent 12 }}
+          startupProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 5
+            failureThreshold: 24
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 6
+          livenessProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 3
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: rds-ca, mountPath: /etc/rds-ca, readOnly: true}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - name: rds-ca
+          configMap: {name: rds-ca}
+        - name: tmp
+          emptyDir: {}
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector: {matchLabels: {app: backend}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "opsflow.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector: {app: backend}
+  ports: [{name: http, port: 3000, targetPort: http}]

@@ -1,0 +1,7 @@
+apiVersion: v2
+name: opsflow
+description: Existing OpsFlow EKS application, managed as one Helm release
+type: application
+version: 0.1.0
+appVersion: "phase7"
+kubeVersion: ">=1.29.0-0"

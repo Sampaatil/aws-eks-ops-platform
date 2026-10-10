@@ -1,0 +1,4 @@
+OpsFlow is managed as release {{ .Release.Name }} in {{ .Release.Namespace }}.
+Check helm history and kubectl rollout status, then perform the read-only Phase 6 verification.
+RDS, opsflow-db-secret, rds-ca, namespace and ALB controller remain external.
+First-install failure is not an automatic rollback to the pre-Helm application.
