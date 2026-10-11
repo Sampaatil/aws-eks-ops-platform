@@ -329,3 +329,4 @@ node outbound connectivity are subsequent phases. See docs/phase4-aws-foundation
 - No application authentication
 - No tested database restoration
 - No complete production monitoring and alerting stack
+[Phase 9 CI/CD results](docs/phase9-results.md)
