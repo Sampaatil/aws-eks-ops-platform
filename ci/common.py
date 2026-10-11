@@ -45,7 +45,21 @@ def scan(image, *, wait):
     repo, digest = image.split('@')
     name = repo.split('/', 1)[1]
     if wait:
-        run(['aws', 'ecr', 'wait', 'image-scan-complete', '--repository-name', name, '--image-id', f'imageDigest={digest}'])
+        import subprocess
+    import time
+    scan_wait_command = [
+        'aws', 'ecr', 'wait', 'image-scan-complete',
+        '--repository-name', name, '--image-id', f'imageDigest={digest}'
+    ]
+    for attempt in range(24):
+        result = subprocess.run(scan_wait_command, capture_output=True, text=True)
+        if result.returncode == 0:
+            break
+        error = result.stdout + result.stderr
+        if 'ScanNotFoundException' not in error or attempt == 23:
+            raise RuntimeError(f'ECR scan waiter failed: {error}')
+        print('ECR scan record not available yet; retrying in 5 seconds.', flush=True)
+        time.sleep(5)
     result = aws_json(['ecr', 'describe-image-scan-findings', '--repository-name', name, '--image-id', f'imageDigest={digest}'])
     if result['imageScanStatus']['status'] != 'COMPLETE':
         raise RuntimeError('Completed BASIC ECR scan required. Enhanced scanning requires a separate Inspector-aware gate.')
