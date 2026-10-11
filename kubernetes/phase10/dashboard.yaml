@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opsflow-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: '1'
+data:
+  opsflow.json: "{\n  \"uid\": \"opsflow-phase10\",\n  \"title\": \"OpsFlow \\u2014\
+    \ Kubernetes Operations\",\n  \"schemaVersion\": 39,\n  \"version\": 1,\n  \"\
+    refresh\": \"30s\",\n  \"time\": {\n    \"from\": \"now-1h\",\n    \"to\": \"\
+    now\"\n  },\n  \"tags\": [\n    \"opsflow\",\n    \"phase10\"\n  ],\n  \"templating\"\
+    : {\n    \"list\": [\n      {\n        \"name\": \"DS_PROMETHEUS\",\n        \"\
+    type\": \"datasource\",\n        \"query\": \"prometheus\",\n        \"current\"\
+    : {},\n        \"label\": \"Prometheus\"\n      }\n    ]\n  },\n  \"panels\":\
+    \ [\n    {\n      \"id\": 1,\n      \"title\": \"Available replicas\",\n     \
+    \ \"type\": \"timeseries\",\n      \"gridPos\": {\n        \"x\": 0,\n       \
+    \ \"y\": 0,\n        \"w\": 12,\n        \"h\": 8\n      },\n      \"datasource\"\
+    : {\n        \"type\": \"prometheus\",\n        \"uid\": \"${DS_PROMETHEUS}\"\n\
+    \      },\n      \"targets\": [\n        {\n          \"expr\": \"kube_deployment_status_replicas_available{namespace=\\\
+    \"opsflow\\\",deployment=~\\\"backend|frontend\\\"}\",\n          \"refId\": \"\
+    A\",\n          \"legendFormat\": \"{{pod}}{{deployment}}{{instance}}\"\n    \
+    \    }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n        \
+    \  \"unit\": \"short\"\n        },\n        \"overrides\": []\n      },\n    \
+    \  \"options\": {\n        \"legend\": {\n          \"displayMode\": \"list\"\
+    ,\n          \"placement\": \"bottom\"\n        }\n      }\n    },\n    {\n  \
+    \    \"id\": 2,\n      \"title\": \"CPU cores by pod\",\n      \"type\": \"timeseries\"\
+    ,\n      \"gridPos\": {\n        \"x\": 12,\n        \"y\": 0,\n        \"w\"\
+    : 12,\n        \"h\": 8\n      },\n      \"datasource\": {\n        \"type\":\
+    \ \"prometheus\",\n        \"uid\": \"${DS_PROMETHEUS}\"\n      },\n      \"targets\"\
+    : [\n        {\n          \"expr\": \"sum by (pod) (rate(container_cpu_usage_seconds_total{namespace=\\\
+    \"opsflow\\\",container!=\\\"\\\",container!=\\\"POD\\\",image!=\\\"\\\"}[5m]))\"\
+    ,\n          \"refId\": \"A\",\n          \"legendFormat\": \"{{pod}}{{deployment}}{{instance}}\"\
+    \n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n   \
+    \       \"unit\": \"cores\"\n        },\n        \"overrides\": []\n      },\n\
+    \      \"options\": {\n        \"legend\": {\n          \"displayMode\": \"list\"\
+    ,\n          \"placement\": \"bottom\"\n        }\n      }\n    },\n    {\n  \
+    \    \"id\": 3,\n      \"title\": \"Working memory by pod\",\n      \"type\":\
+    \ \"timeseries\",\n      \"gridPos\": {\n        \"x\": 0,\n        \"y\": 8,\n\
+    \        \"w\": 12,\n        \"h\": 8\n      },\n      \"datasource\": {\n   \
+    \     \"type\": \"prometheus\",\n        \"uid\": \"${DS_PROMETHEUS}\"\n     \
+    \ },\n      \"targets\": [\n        {\n          \"expr\": \"sum by (pod) (container_memory_working_set_bytes{namespace=\\\
+    \"opsflow\\\",container!=\\\"\\\",container!=\\\"POD\\\",image!=\\\"\\\"})\",\n\
+    \          \"refId\": \"A\",\n          \"legendFormat\": \"{{pod}}{{deployment}}{{instance}}\"\
+    \n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n   \
+    \       \"unit\": \"bytes\"\n        },\n        \"overrides\": []\n      },\n\
+    \      \"options\": {\n        \"legend\": {\n          \"displayMode\": \"list\"\
+    ,\n          \"placement\": \"bottom\"\n        }\n      }\n    },\n    {\n  \
+    \    \"id\": 4,\n      \"title\": \"Restarts in 15 minutes\",\n      \"type\"\
+    : \"timeseries\",\n      \"gridPos\": {\n        \"x\": 12,\n        \"y\": 8,\n\
+    \        \"w\": 12,\n        \"h\": 8\n      },\n      \"datasource\": {\n   \
+    \     \"type\": \"prometheus\",\n        \"uid\": \"${DS_PROMETHEUS}\"\n     \
+    \ },\n      \"targets\": [\n        {\n          \"expr\": \"sum by (pod) (increase(kube_pod_container_status_restarts_total{namespace=\\\
+    \"opsflow\\\"}[15m]))\",\n          \"refId\": \"A\",\n          \"legendFormat\"\
+    : \"{{pod}}{{deployment}}{{instance}}\"\n        }\n      ],\n      \"fieldConfig\"\
+    : {\n        \"defaults\": {\n          \"unit\": \"short\"\n        },\n    \
+    \    \"overrides\": []\n      },\n      \"options\": {\n        \"legend\": {\n\
+    \          \"displayMode\": \"list\",\n          \"placement\": \"bottom\"\n \
+    \       }\n      }\n    },\n    {\n      \"id\": 5,\n      \"title\": \"Node memory\
+    \ available\",\n      \"type\": \"timeseries\",\n      \"gridPos\": {\n      \
+    \  \"x\": 0,\n        \"y\": 16,\n        \"w\": 12,\n        \"h\": 8\n     \
+    \ },\n      \"datasource\": {\n        \"type\": \"prometheus\",\n        \"uid\"\
+    : \"${DS_PROMETHEUS}\"\n      },\n      \"targets\": [\n        {\n          \"\
+    expr\": \"node_memory_MemAvailable_bytes\",\n          \"refId\": \"A\",\n   \
+    \       \"legendFormat\": \"{{pod}}{{deployment}}{{instance}}\"\n        }\n \
+    \     ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\"\
+    : \"bytes\"\n        },\n        \"overrides\": []\n      },\n      \"options\"\
+    : {\n        \"legend\": {\n          \"displayMode\": \"list\",\n          \"\
+    placement\": \"bottom\"\n        }\n      }\n    },\n    {\n      \"id\": 6,\n\
+    \      \"title\": \"Scrape target health\",\n      \"type\": \"timeseries\",\n\
+    \      \"gridPos\": {\n        \"x\": 12,\n        \"y\": 16,\n        \"w\":\
+    \ 12,\n        \"h\": 8\n      },\n      \"datasource\": {\n        \"type\":\
+    \ \"prometheus\",\n        \"uid\": \"${DS_PROMETHEUS}\"\n      },\n      \"targets\"\
+    : [\n        {\n          \"expr\": \"up\",\n          \"refId\": \"A\",\n   \
+    \       \"legendFormat\": \"{{pod}}{{deployment}}{{instance}}\"\n        }\n \
+    \     ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\"\
+    : \"short\"\n        },\n        \"overrides\": []\n      },\n      \"options\"\
+    : {\n        \"legend\": {\n          \"displayMode\": \"list\",\n          \"\
+    placement\": \"bottom\"\n        }\n      }\n    }\n  ]\n}"

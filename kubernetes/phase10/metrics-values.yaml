@@ -1,0 +1,91 @@
+# Pinned kube-prometheus-stack 92.3.0. Lab: ephemeral storage, one replica.
+fullnameOverride: opsflow-monitoring
+defaultRules:
+  create: false
+kubeEtcd: {enabled: false}
+kubeControllerManager: {enabled: false}
+kubeScheduler: {enabled: false}
+kubeProxy: {enabled: false}
+# EKS does not expose these components at the chart's default node endpoints.
+# API server, kubelet/cAdvisor, kube-state-metrics and node exporter remain enabled.
+prometheusOperator:
+  resources:
+    requests: {cpu: 50m, memory: 64Mi}
+    limits: {cpu: 300m, memory: 256Mi}
+  admissionWebhooks:
+    enabled: false
+  tls:
+    enabled: false
+prometheus:
+  service: {type: ClusterIP}
+  ingress: {enabled: false}
+  prometheusSpec:
+    replicas: 1
+    retention: 6h
+    retentionSize: 1GB
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+    resources:
+      requests: {cpu: 150m, memory: 256Mi}
+      limits: {cpu: "1", memory: 1536Mi}
+    storageSpec:
+      emptyDir:
+        sizeLimit: 2Gi
+    externalLabels: {cluster: opsflow-lab}
+    serviceMonitorSelectorNilUsesHelmValues: true
+    podMonitorSelectorNilUsesHelmValues: true
+    ruleSelectorNilUsesHelmValues: true
+alertmanager:
+  enabled: false
+  service: {type: ClusterIP}
+  ingress: {enabled: false}
+  alertmanagerSpec:
+    replicas: 1
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 200m, memory: 128Mi}
+    storage:
+      emptyDir: {sizeLimit: 256Mi}
+  config:
+    global: {resolve_timeout: 5m}
+    route:
+      receiver: local-only
+      group_by: [alertname, namespace]
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 4h
+    receivers:
+      - name: local-only
+# Alerts visible in UI only; no email/Slack notifications are configured.
+grafana:
+  enabled: true
+  service: {type: ClusterIP}
+  ingress: {enabled: false}
+  admin:
+    existingSecret: opsflow-grafana-admin
+    userKey: admin-user
+    passwordKey: admin-password
+  persistence: {enabled: false}
+  resources:
+    requests: {cpu: 50m, memory: 64Mi}
+    limits: {cpu: 300m, memory: 384Mi}
+  sidecar:
+    dashboards:
+      enabled: true
+      searchNamespace: monitoring
+    resources:
+      requests: {cpu: 20m, memory: 64Mi}
+      limits: {cpu: 100m, memory: 192Mi}
+  defaultDashboardsEnabled: false
+  grafana.ini:
+    users: {allow_sign_up: false}
+    auth.anonymous: {enabled: false}
+kube-state-metrics:
+  resources:
+    requests: {cpu: 30m, memory: 64Mi}
+    limits: {cpu: 200m, memory: 256Mi}
+prometheus-node-exporter:
+  resources:
+    requests: {cpu: 30m, memory: 32Mi}
+    limits: {cpu: 100m, memory: 64Mi}
+

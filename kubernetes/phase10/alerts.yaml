@@ -1,0 +1,37 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: opsflow-alerts
+  namespace: monitoring
+  labels:
+    release: opsflow-monitoring
+spec:
+  groups:
+  - name: opsflow.workloads
+    rules:
+    - alert: OpsFlowDeploymentUnavailable
+      expr: kube_deployment_status_replicas_available{namespace="opsflow",deployment=~"backend|frontend"}
+        < kube_deployment_spec_replicas{namespace="opsflow",deployment=~"backend|frontend"}
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: OpsFlow deployment below desired availability
+        description: Inspect rollout, scheduling, probes and recent release; do not
+          automatically restart or rotate credentials.
+    - alert: OpsFlowContainerRestarts
+      expr: sum by (pod, container) (increase(kube_pod_container_status_restarts_total{namespace="opsflow"}[10m]))
+        > 2
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: Repeated OpsFlow container restarts
+    - alert: OpsFlowMetricsMissing
+      expr: absent(kube_deployment_spec_replicas{namespace="opsflow",deployment="backend"})
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: Backend deployment metrics missing; inspect kube-state-metrics and
+          scrape health

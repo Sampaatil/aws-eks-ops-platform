@@ -1,0 +1,4 @@
+aws_account_id = "952078551971"
+aws_region = "ap-south-1"
+cluster_name = "opsflow-lab"
+log_retention_days = 7
