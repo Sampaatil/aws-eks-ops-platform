@@ -10,6 +10,27 @@ from pathlib import Path
 from common import aws_json, env, identity, run, scan, validate_release
 
 
+def download(url):
+    import http.client
+    import time
+    import urllib.error
+
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(url, timeout=60) as response:
+                return response.read()
+        except (http.client.IncompleteRead, urllib.error.URLError,
+                TimeoutError, ConnectionError) as error:
+            if attempt == 2:
+                raise
+            print(
+                f'Download interrupted ({type(error).__name__}); '
+                f'retrying attempt {attempt + 2}/3.',
+                flush=True
+            )
+            time.sleep(5 * (attempt + 1))
+
+
 def tools():
     dest = Path('release-artifact/tools'); dest.mkdir(parents=True, exist_ok=True)
     helm_version, kubectl_version = env('HELM_VERSION'), env('KUBECTL_VERSION')
@@ -18,9 +39,9 @@ def tools():
     for tool, url in [
         ('helm', f'https://get.helm.sh/helm-{helm_version}-linux-amd64.tar.gz'),
         ('kubectl', f'https://dl.k8s.io/release/{kubectl_version}/bin/linux/amd64/kubectl')]:
-        blob = urllib.request.urlopen(url, timeout=60).read()
+        blob = download(url)
         checksum_url = url + ('.sha256sum' if tool == 'helm' else '.sha256')
-        expected = urllib.request.urlopen(checksum_url, timeout=60).read().decode().split()[0]
+        expected = download(checksum_url).decode().split()[0]
         if hashlib.sha256(blob).hexdigest() != expected:
             raise RuntimeError(f'{tool} upstream checksum mismatch')
         if tool == 'helm':
