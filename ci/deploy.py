@@ -6,6 +6,7 @@ import time
 import urllib.request
 from pathlib import Path
 from common import aws_json, env, identity, run, scan, validate_release
+from security_contract import verify_security
 
 
 def k(args, *, capture=False):
@@ -51,6 +52,7 @@ def verify():
 def main():
     evidence = Path('deployment.json')
     record = json.loads(Path('release.json').read_text()); validate_release(record); identity()
+    verify_security(record)  # Reject incomplete or digest-mismatched evidence before EKS access.
     for name in ['helm', 'kubectl']:
         path = Path('tools') / name
         if hashlib.sha256(path.read_bytes()).hexdigest() != record['toolChecksums'][name]:

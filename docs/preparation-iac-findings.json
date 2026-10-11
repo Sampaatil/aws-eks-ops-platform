@@ -1,0 +1,1033 @@
+{
+  "schemaVersion": 1,
+  "status": "FAILED",
+  "blockingCount": 25,
+  "findings": [
+    {
+      "kind": "misconfiguration",
+      "target": "backend/Dockerfile",
+      "id": "DS-0026",
+      "subject": "lines:0-0",
+      "severity": "LOW",
+      "fingerprint": "e5ef54b5d16e1258372353a039d7f4c5dba880bf303389fe403d4cf69207c0e5",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "frontend/Dockerfile",
+      "id": "DS-0002",
+      "subject": "lines:0-0",
+      "severity": "HIGH",
+      "fingerprint": "80f77d84de977907fc49c1eaa5ef59769a3b74e47b79ae475bded35a06268048",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "frontend/Dockerfile",
+      "id": "DS-0026",
+      "subject": "lines:0-0",
+      "severity": "LOW",
+      "fingerprint": "94dd7999543f5f34428caa5ae7281987adaa1073a2aed11155d34833082f61de",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase10/main.tf",
+      "id": "AWS-0017",
+      "subject": "aws_cloudwatch_log_group.application",
+      "severity": "LOW",
+      "fingerprint": "b0666d173df5def0fa7c942023a03d6ab5f7b92b0d3480ec96997cfa00bad50b",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase4/bootstrap/main.tf",
+      "id": "AWS-0089",
+      "subject": "aws_s3_bucket.state",
+      "severity": "LOW",
+      "fingerprint": "2b14307804f032d5efedcb0b303f863686d4b4f2e9ffcfd3475f93d628cd1455",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase4/bootstrap/main.tf",
+      "id": "AWS-0132",
+      "subject": "aws_s3_bucket_server_side_encryption_configuration.state",
+      "severity": "HIGH",
+      "fingerprint": "d05fbd1c7bb97c8acded1e2438401613588e247377268d7495ae736294a5543d",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase4/foundation/ecr.tf",
+      "id": "AWS-0033",
+      "subject": "aws_ecr_repository.app[\"backend\"]",
+      "severity": "LOW",
+      "fingerprint": "2679b1d717be77c27a8c1e04fd0c4522750123a0cf3121747b70e67c04eb1eb9",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase4/foundation/ecr.tf",
+      "id": "AWS-0033",
+      "subject": "aws_ecr_repository.app[\"frontend\"]",
+      "severity": "LOW",
+      "fingerprint": "2ed65d636f7064ad5ffbf564e872f63ad15380eb6b2b365aa77567fec550b899",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase4/foundation/network.tf",
+      "id": "AWS-0178",
+      "subject": "aws_vpc.main",
+      "severity": "MEDIUM",
+      "fingerprint": "eec5b88ecbf8ddf62f1b4c5127f9117a26dae63799344baa6c71199e83c60026",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/app-secret.tf",
+      "id": "AWS-0098",
+      "subject": "aws_secretsmanager_secret.application_database",
+      "severity": "LOW",
+      "fingerprint": "1c3efc5e4048dfab533b0787beb25b44f45246327210ccecdcf78209d153eefe",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/eks.tf",
+      "id": "AWS-0017",
+      "subject": "aws_cloudwatch_log_group.cluster",
+      "severity": "LOW",
+      "fingerprint": "99e7f31e8b4e9455cfd34d606aa6b9a05cda29b71701d113ae1b7344d646223a",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/eks.tf",
+      "id": "AWS-0038",
+      "subject": "aws_eks_cluster.main",
+      "severity": "MEDIUM",
+      "fingerprint": "41c9b3c6d8955b2857cb9b40a955bbfc3727b47946cac3f579379ebbf48d2814",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/eks.tf",
+      "id": "AWS-0038",
+      "subject": "aws_eks_cluster.main",
+      "severity": "MEDIUM",
+      "fingerprint": "41c9b3c6d8955b2857cb9b40a955bbfc3727b47946cac3f579379ebbf48d2814",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/eks.tf",
+      "id": "AWS-0039",
+      "subject": "aws_eks_cluster.main",
+      "severity": "HIGH",
+      "fingerprint": "0228801d5b0284b83ff15ae6cc7187ea15526b69be0c0dadfe3af1b3fdc5705f",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/eks.tf",
+      "id": "AWS-0040",
+      "subject": "aws_eks_cluster.main",
+      "severity": "CRITICAL",
+      "fingerprint": "a5306e96ecf841ed2f474c434899a60652453f12ae8d35886b0ee6859d705403",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/rds.tf",
+      "id": "AWS-0017",
+      "subject": "aws_cloudwatch_log_group.database[\"postgresql\"]",
+      "severity": "LOW",
+      "fingerprint": "1a3047ca25e076c9945dcc7017935386d8b3e832b59d0675f182bf16bd43c0a0",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/rds.tf",
+      "id": "AWS-0017",
+      "subject": "aws_cloudwatch_log_group.database[\"upgrade\"]",
+      "severity": "LOW",
+      "fingerprint": "de175c1213548bcf57fcd6af12a307c20d43f59ced0f9d7ffab23a4e36fda7b4",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/rds.tf",
+      "id": "AWS-0077",
+      "subject": "aws_db_instance.main",
+      "severity": "MEDIUM",
+      "fingerprint": "868c8091a3e9d35b2720084ef1291a8eb69a20bad7f6018528f45ad8b54bc5ee",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/rds.tf",
+      "id": "AWS-0133",
+      "subject": "aws_db_instance.main",
+      "severity": "LOW",
+      "fingerprint": "935dbbc4848a94369fb3c64bf79f0c28a199a910740f8d500c214def46a8c5ce",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/rds.tf",
+      "id": "AWS-0176",
+      "subject": "aws_db_instance.main",
+      "severity": "MEDIUM",
+      "fingerprint": "59d7e132a8f41e57ed5c4ccfe1e25b94ad6607036f38f6a5eb5094db08784248",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/rds.tf",
+      "id": "AWS-0177",
+      "subject": "aws_db_instance.main",
+      "severity": "MEDIUM",
+      "fingerprint": "5dcfa22e0b7341e6c0603448b6e0a082fe1ef7e7680155fe7d6815827628f364",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0104",
+      "subject": "aws_vpc_security_group_egress_rule.control",
+      "severity": "CRITICAL",
+      "fingerprint": "d131b2be8eb9c6805071a7f5e77d393fc287e4acb241167dcf8a9dc791b1b197",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0104",
+      "subject": "aws_vpc_security_group_egress_rule.nodes",
+      "severity": "CRITICAL",
+      "fingerprint": "506a3ac725809f11fe51ab035abf795cc697a52188618a3aaf46f80f5cb35539",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_egress_rule.control",
+      "severity": "LOW",
+      "fingerprint": "e7629e672c1522383be480cfebcac07bdee5122e17d7a0da93b147e04d70aff1",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_egress_rule.nodes",
+      "severity": "LOW",
+      "fingerprint": "d86a1cf5288cf72f8c4404fa7736638ed58a13430b7bc48b3c59e78771a9c497",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_ingress_rule.control_from_nodes",
+      "severity": "LOW",
+      "fingerprint": "b0363090c486ab963885181906a6eef399c6db8a654dd251f4bbd53bddea9d89",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_ingress_rule.database",
+      "severity": "LOW",
+      "fingerprint": "3738fdc944ba4da7c390bf901fec0a2a9e2859811d96d319f6b29a9fac6521b7",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_ingress_rule.nodes_control[\"10250\"]",
+      "severity": "LOW",
+      "fingerprint": "dd2c01c7d25cb1b5162ec30daf060c035066a8c08b8ed5ae61b4c5e2aa2b6453",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_ingress_rule.nodes_control[\"443\"]",
+      "severity": "LOW",
+      "fingerprint": "5cd5aea3fd12acf0648e63d85034d79b0961bdc52e1534205b66f3207e56d8c6",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_ingress_rule.nodes_control[\"9443\"]",
+      "severity": "LOW",
+      "fingerprint": "c8f14caeea4608fb108ade9b600301b046833991f5df3128d1fee0202651e70f",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase5/security.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_ingress_rule.nodes_self",
+      "severity": "LOW",
+      "fingerprint": "5db66284f86177694af432b4106b429b48e669e879fb67273fb3829da83c6aa9",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase9/network.tf",
+      "id": "AWS-0104",
+      "subject": "aws_vpc_security_group_egress_rule.deploy",
+      "severity": "CRITICAL",
+      "fingerprint": "03fc0dfb513b9a374f389d4186574f27fe544555b961c5a1bef4941d0c5b4289",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase9/network.tf",
+      "id": "AWS-0124",
+      "subject": "aws_vpc_security_group_egress_rule.deploy",
+      "severity": "LOW",
+      "fingerprint": "17ee56010e957501829325c5ed5dddce473f2bbd3d0935762025733e64e16b24",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase9/storage.tf",
+      "id": "AWS-0017",
+      "subject": "aws_cloudwatch_log_group.build[\"cd\"]",
+      "severity": "LOW",
+      "fingerprint": "20b7e52b4b27434d75808d1647151ba13d1c38dddc8012443fecf220ec0056a7",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase9/storage.tf",
+      "id": "AWS-0017",
+      "subject": "aws_cloudwatch_log_group.build[\"ci\"]",
+      "severity": "LOW",
+      "fingerprint": "ec02add54d8b06d3c221d4499a40c306224898778d616cac7205dc0ea8445a6e",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase9/storage.tf",
+      "id": "AWS-0089",
+      "subject": "aws_s3_bucket.artifacts",
+      "severity": "LOW",
+      "fingerprint": "4f877a83145f8771c80068a11aad530359498e9e2306bd81c6ff25bba7fdd70e",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "infrastructure/phase9/storage.tf",
+      "id": "AWS-0132",
+      "subject": "aws_s3_bucket_server_side_encryption_configuration.artifacts",
+      "severity": "HIGH",
+      "fingerprint": "37704caee5c17623c446f5086de405ce36c62c7c7dc7688dc279aebe880aad9e",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/backend-deployment.yaml",
+      "id": "KSV-0014",
+      "subject": "lines:38-105",
+      "severity": "HIGH",
+      "fingerprint": "42056f8c31aa696d090ff98e10d620f45da3cb25aa6a9f23dad703ac9f4cb3a4",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/backend-deployment.yaml",
+      "id": "KSV-0030",
+      "subject": "lines:38-105",
+      "severity": "LOW",
+      "fingerprint": "5216933493567e89e71802d600f76b510deb3477561fbcdb62a2aa6ef2ef0573",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/backend-deployment.yaml",
+      "id": "KSV-0104",
+      "subject": "lines:38-105",
+      "severity": "MEDIUM",
+      "fingerprint": "28ff271f271ddf71247553a251b570cab1c4175dd625a73323ed8461c2198120",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/backend-deployment.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:34-105",
+      "severity": "HIGH",
+      "fingerprint": "8374c02c381b2e64b77dc1ff756a51d27b3e4431f8131afbd9708f28a5d8ccfc",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/configmap.yaml",
+      "id": "KSV-01010",
+      "subject": "lines:0-0",
+      "severity": "MEDIUM",
+      "fingerprint": "ff566a22583c8ce9a78a2b3d83b57463c0e03a2a5a76f28e7a067f26e5f116e3",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0001",
+      "subject": "lines:38-82",
+      "severity": "MEDIUM",
+      "fingerprint": "158f22cd4e479d30e4a46caf4dcf3216f601351f3180ecbcdcab2c4431105aac",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0003",
+      "subject": "lines:38-82",
+      "severity": "LOW",
+      "fingerprint": "c7a193df7639bd4362e40597f89ad91d517c76ffe5d958b64914681dbea7be23",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0004",
+      "subject": "lines:38-82",
+      "severity": "LOW",
+      "fingerprint": "1d70b05060a28e82126851cb04fb568fc13d86b607563bf90ebaffee3d92a363",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0012",
+      "subject": "lines:38-82",
+      "severity": "MEDIUM",
+      "fingerprint": "5b27b8dd2e6c261c37b5238409591258c0ba19c6935202c64564bfcef9010fba",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0014",
+      "subject": "lines:38-82",
+      "severity": "HIGH",
+      "fingerprint": "2521ece151b42870d80427d8f8274206baff53219af845b0e5c791daedf21d76",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:38-82",
+      "severity": "LOW",
+      "fingerprint": "0777b102aaab47d59cfd9e45c863e40c2c45112bdaeba4222af84b2d148e51f8",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:38-82",
+      "severity": "LOW",
+      "fingerprint": "060e3fbc16d34c494fff2e7d7fb67b9e7397651babb65b7c7522279fc752dbed",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0030",
+      "subject": "lines:38-82",
+      "severity": "LOW",
+      "fingerprint": "837022542b1423ae3b1d76c35c38f01f9a013645b3338dea18f99b0c93fd75d3",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0104",
+      "subject": "lines:38-82",
+      "severity": "MEDIUM",
+      "fingerprint": "9394f8ac00fef8e577979ff8ef450abe0a77a00055246f63dd2104818dfe2372",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0106",
+      "subject": "lines:38-82",
+      "severity": "LOW",
+      "fingerprint": "bd15e4a5198b245d2cf6cfeafd4d10457f3ea5adddb7f8c96a6e2645eb7658e1",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:38-82",
+      "severity": "HIGH",
+      "fingerprint": "e5273f065592bc172c098f9cbc3c33c4c3c5c335854af82fa401b53de761c889",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/frontend-deployment.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:34-88",
+      "severity": "HIGH",
+      "fingerprint": "b290b9c6c481c1413b0c975cbff1c1b4b5156a12089a6ee7214d80ec9634f6b6",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0001",
+      "subject": "lines:26-98",
+      "severity": "MEDIUM",
+      "fingerprint": "b14d0ff7a499c6bd17d1b484edca8b1986060df5fceef12850e91d2b5278b5d4",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0003",
+      "subject": "lines:26-98",
+      "severity": "LOW",
+      "fingerprint": "89a61cf29b49c1b552b06d29c2eeb8dbf4b647d3107dcc8ece24eaf70b91c3a1",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0004",
+      "subject": "lines:26-98",
+      "severity": "LOW",
+      "fingerprint": "b6147ac6b6b4f483cd0d9bf1bcc0a44f57fd1443983cd8818bb33576ebaea79a",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0012",
+      "subject": "lines:26-98",
+      "severity": "MEDIUM",
+      "fingerprint": "c71f8032a9275506fa1d7621c43cd54d4d8f131995ff3fe2f0c554e4436ec14a",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0014",
+      "subject": "lines:26-98",
+      "severity": "HIGH",
+      "fingerprint": "0317d3cd31f4c48c08888e4817c8ec6ca2aba83b18ddd1dac7c9be6e5533540e",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:26-98",
+      "severity": "LOW",
+      "fingerprint": "9f297b6fcdfbc3efed51cc0d211a5b10f1b0209e1818bcb92584b7f4f70c7b8b",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:26-98",
+      "severity": "LOW",
+      "fingerprint": "ca43d63f39435c80fa2a168dab6a9c52d9e99b70434ac3d4c69e8a6f02232287",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0030",
+      "subject": "lines:26-98",
+      "severity": "LOW",
+      "fingerprint": "218bfa14830698c1f124db3f4cd6d7459cdb324627b011d2a1fde6ea03da0757",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0104",
+      "subject": "lines:26-98",
+      "severity": "MEDIUM",
+      "fingerprint": "a417603c419059ded59c59d602a91ee0ae170b0342a2a22c1d5b135b871b651b",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0106",
+      "subject": "lines:26-98",
+      "severity": "LOW",
+      "fingerprint": "c0782e94cd31f6926ddffd2259aec2c17506a424ecff7577a566385bc76cdbbd",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:26-98",
+      "severity": "HIGH",
+      "fingerprint": "044b8b8840504e5d01d7ab5d9d66413aa88efa4e8fb2504e5b4ca7768ce29f6c",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/base/postgres-deployment.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:24-108",
+      "severity": "HIGH",
+      "fingerprint": "f49b515df8a21f3976c26f4db14b6d69209cb1d994a1a7481b26dcca2511e451",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0001",
+      "subject": "lines:14-35",
+      "severity": "MEDIUM",
+      "fingerprint": "520a6362d0a8f395931cca70170631e4482b1683d43c12f37462f681aeea0ef7",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0003",
+      "subject": "lines:14-35",
+      "severity": "LOW",
+      "fingerprint": "b9e0319d521e7393557103eb7cb8db2d41e9c4bcc96e3f77bd9f4f0ad060ef10",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0004",
+      "subject": "lines:14-35",
+      "severity": "LOW",
+      "fingerprint": "c99725d33c5e3731e14a18ef858642905b2eac859662cadd74f63d9a889f776c",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0012",
+      "subject": "lines:14-35",
+      "severity": "MEDIUM",
+      "fingerprint": "5c251f89d413547d7d579f69fc855b149ce3396e0fdf2f6b374778c232d4efb6",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0014",
+      "subject": "lines:14-35",
+      "severity": "HIGH",
+      "fingerprint": "45bb6c9de0336d80f02be080df5e838dbf0f100e9b00204cfaab431d00d4a76a",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:14-35",
+      "severity": "LOW",
+      "fingerprint": "af0681e974eb450557de1a186bc2795c90a05c5be45727b0ea1a497926c03920",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:14-35",
+      "severity": "LOW",
+      "fingerprint": "eec635127840e3b912ee3c88eb0a804bed46b7132c8892280e0b6d2341baff7b",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0030",
+      "subject": "lines:14-35",
+      "severity": "LOW",
+      "fingerprint": "eba22181daf786dc9a5027ec8af9d1728618aba4e673eff5fe95af0c94c2c615",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0104",
+      "subject": "lines:14-35",
+      "severity": "MEDIUM",
+      "fingerprint": "2afae8c176fa6a55f605db5b424801d059881782e56d15c22433982d0c16023d",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0106",
+      "subject": "lines:14-35",
+      "severity": "LOW",
+      "fingerprint": "5b3cd01d3b6c132f842df267fdb4f273c5a95e22a02b466ead107875c370be24",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:14-35",
+      "severity": "HIGH",
+      "fingerprint": "c79814834bc28f3861a762163d0d77ebe30aa3ea6590930ef330111bfc86cc63",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/create-app-role.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:10-40",
+      "severity": "HIGH",
+      "fingerprint": "1626412b5d0d3de7dcfa89385e9a330efa05b1ab69d6537fedaea577cc615925",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0001",
+      "subject": "lines:14-36",
+      "severity": "MEDIUM",
+      "fingerprint": "7d8f7190f6a8cea8561bdf727d2131ef0ca03a16c2394102a00cdca2fb6876c8",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0003",
+      "subject": "lines:14-36",
+      "severity": "LOW",
+      "fingerprint": "18d6d21a9e6848c4d94d450902b33b7cbe782b6b0db84188d44720b4033a48a2",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0004",
+      "subject": "lines:14-36",
+      "severity": "LOW",
+      "fingerprint": "e2dafe2c37ef5ea28dd1559f7591879e2c8c85790a0a98f80e839975880ff15a",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0012",
+      "subject": "lines:14-36",
+      "severity": "MEDIUM",
+      "fingerprint": "938447ef4e1e179a368091ffea2625a3c62ba969582a7ac6a6d1fd03ea55535c",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0014",
+      "subject": "lines:14-36",
+      "severity": "HIGH",
+      "fingerprint": "e2d840a8096cf73125f4981d84ab60862d156d31601462f264a9455c6aebb1f4",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:14-36",
+      "severity": "LOW",
+      "fingerprint": "4c9e026ff121795ab3b8f7e710af1def3ab365683b6bbdbb9b7227ffcec31a5e",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:14-36",
+      "severity": "LOW",
+      "fingerprint": "44970bafa45b0225afcc4fc1c7b92193a5e495299ccb5acd620d1f7717284fed",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0030",
+      "subject": "lines:14-36",
+      "severity": "LOW",
+      "fingerprint": "de2f5377a5e620c62aae6042639c4963e8b838891433398761136454d42f932d",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0104",
+      "subject": "lines:14-36",
+      "severity": "MEDIUM",
+      "fingerprint": "fd9389014bee2be90e6028acda41be2bf9e8ca47fb13cec1347761b5de23bdc1",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0106",
+      "subject": "lines:14-36",
+      "severity": "LOW",
+      "fingerprint": "593076c832687ed3e1d7b0d8a31637abc9089d16f318fa05259667780164d589",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:14-36",
+      "severity": "HIGH",
+      "fingerprint": "51f9086daf9fd90a45c0a17e492e6554425cebd6d8cb65ce56a3749dd1fa5ad3",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/jobs/init-schema.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:10-41",
+      "severity": "HIGH",
+      "fingerprint": "3deab5f3801ec9c86b1226e12d238cda2ccd04feb0bf2852137fadced35ff8b8",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/backend.yaml",
+      "id": "KSV-0013",
+      "subject": "lines:26-55",
+      "severity": "MEDIUM",
+      "fingerprint": "2d97f65972aea13cc4fecc052aca57ed69c2e388c39fdbe7da3492b0532eaeae",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/backend.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:26-55",
+      "severity": "LOW",
+      "fingerprint": "f1c66f37296f3f9f8e08918a24c2bcf9583f97891c062bc62d464bfd4bc88c49",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/backend.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:26-55",
+      "severity": "LOW",
+      "fingerprint": "e65918578375bf605eb86f95134dc843c43956539e721837d38b5f845c851682",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/configmap.yaml",
+      "id": "KSV-01010",
+      "subject": "lines:0-0",
+      "severity": "MEDIUM",
+      "fingerprint": "27cbcee43f9ccd48c1f7ce21257ba4ac0e14fde9c2c65ccfc0c5a55a7784ee96",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/frontend.yaml",
+      "id": "KSV-0013",
+      "subject": "lines:26-46",
+      "severity": "MEDIUM",
+      "fingerprint": "c5cc5f9fc40032fbc23b9ddf433e0ab191c3769ca634d4be45866da94a4a3674",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/frontend.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:26-46",
+      "severity": "LOW",
+      "fingerprint": "efe20ff702deb14a0b73323186d7b9895b1c776f8a226868cb6351c33b1a145a",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/eks/templates/frontend.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:26-46",
+      "severity": "LOW",
+      "fingerprint": "f1670a3a875313527651bf18fdd47245d2bca5c0a027dae7a44c6f7cea1c101e",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0012",
+      "subject": "lines:94-123",
+      "severity": "MEDIUM",
+      "fingerprint": "663b353d43036edf07b7bdb306edb948a1c908eaacd9ad59299694cd8c8597d2",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:94-123",
+      "severity": "LOW",
+      "fingerprint": "58bb7ad7ca06a8d6f5828cf092a6a1900265591498fbd8c37e8133b3aaf949b3",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:94-123",
+      "severity": "LOW",
+      "fingerprint": "8f99ceda652696fa1ab358bf3808ab5f91f464e7b29a39209af7b495d69fb2ff",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0023",
+      "subject": "lines:84-132",
+      "severity": "MEDIUM",
+      "fingerprint": "e64ffdf4d6f690b99b2371adc2f500a9add3de8f9be42674400a2f1522b1f0b2",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0105",
+      "subject": "lines:107-112",
+      "severity": "LOW",
+      "fingerprint": "3c6dbe3b3b2357a213a1b59557b57d286de5773b3672dbaffcab5214d9fc9a50",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0118",
+      "subject": "lines:90-132",
+      "severity": "HIGH",
+      "fingerprint": "6a94c3c865efcc1aba2ab450bf3f1dd9c318920106815fc8ee72e3be182fe25e",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase10/fluent-bit.yaml",
+      "id": "KSV-0125",
+      "subject": "lines:94-123",
+      "severity": "MEDIUM",
+      "fingerprint": "5ac6e287acae1274ab5b673885a2fbebc8873c093802d13129a794cab29015c8",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase9/deployer-rbac.yaml",
+      "id": "KSV-0048",
+      "subject": "lines:7-10",
+      "severity": "MEDIUM",
+      "fingerprint": "2c35ec8d6981d89430da208a0342e6077c825d7efd8a0c4c335631ada37cef52",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase9/deployer-rbac.yaml",
+      "id": "KSV-0049",
+      "subject": "lines:18-21",
+      "severity": "MEDIUM",
+      "fingerprint": "a51410d4519f84ee1008da6495599671b3fb127396b831eac67e219ca666516d",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase9/deployer-rbac.yaml",
+      "id": "KSV-0056",
+      "subject": "lines:14-17",
+      "severity": "HIGH",
+      "fingerprint": "5b70f47d1b20d7f58cbfb2068475b7fd0b1d9ca8ab280ac39dec7ed5fecadfdf",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase9/deployer-rbac.yaml",
+      "id": "KSV-0056",
+      "subject": "lines:22-25",
+      "severity": "HIGH",
+      "fingerprint": "895461c34fa06efff7c1f5b1f21e56d7c636847ca998bafc4f8fdc63685a4f37",
+      "disposition": "BLOCKED"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "kubernetes/phase9/deployer-rbac.yaml",
+      "id": "KSV-0113",
+      "subject": "lines:34-36",
+      "severity": "MEDIUM",
+      "fingerprint": "d680cb290bcecb1323ee7b5dcaae685b2a715aa43f95c4310ba1f26fcbb094cc",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "rendered-opsflow.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:143-176",
+      "severity": "LOW",
+      "fingerprint": "6c378e2c929fdadf9ae530723667fa7c25d92967c7085bcdcf13ae4bc16262a9",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "rendered-opsflow.yaml",
+      "id": "KSV-0020",
+      "subject": "lines:221-245",
+      "severity": "LOW",
+      "fingerprint": "6257f1474ab2e8380da1c6971c5a47bfa4d8ac1148ecb7e49f010c55c59d6e0e",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "rendered-opsflow.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:143-176",
+      "severity": "LOW",
+      "fingerprint": "6c6c0c4a72c2c3ff7602190d641a9fa1a84ce18fbf25116abb12be7a193c03ed",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "rendered-opsflow.yaml",
+      "id": "KSV-0021",
+      "subject": "lines:221-245",
+      "severity": "LOW",
+      "fingerprint": "0cd5d6bbd7f0ac4efd6a0b4f30e219ad3fe171444ccdc7ab88221dff0b546fe1",
+      "disposition": "INFORMATIONAL"
+    },
+    {
+      "kind": "misconfiguration",
+      "target": "rendered-opsflow.yaml",
+      "id": "KSV-01010",
+      "subject": "lines:0-0",
+      "severity": "MEDIUM",
+      "fingerprint": "fd36437d9b5e6dfef42a64bfd607fb5901068c34b5185adba50a36f81cc0e50e",
+      "disposition": "INFORMATIONAL"
+    }
+  ]
+}

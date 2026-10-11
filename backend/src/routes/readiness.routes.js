@@ -12,7 +12,7 @@ router.get("/ready", async (req, res) => {
       database: "connected",
       timestamp: new Date().toISOString(),
     });
-  } catch (error) {
+  } catch {
     res.status(503).json({
       status: "not_ready",
       database: "unavailable",
