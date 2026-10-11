@@ -1,0 +1,5 @@
+bucket = "YOUR_EXISTING_STATE_BUCKET"
+key = "opsflow/lab/ci-cd.tfstate"
+region = "ap-south-1"
+encrypt = true
+use_lockfile = true

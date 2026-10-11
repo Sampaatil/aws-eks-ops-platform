@@ -1,0 +1,50 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: opsflow-ci-deploy
+  namespace: opsflow
+rules:
+  - apiGroups: [apps]
+    resources: [deployments]
+    resourceNames: [backend, frontend]
+    verbs: [get, watch, patch, update]
+  - apiGroups: [apps]
+    resources: [replicasets]
+    verbs: [get, list, watch]
+  - apiGroups: ['']
+    resources: [services]
+    resourceNames: [backend-service, frontend-service]
+    verbs: [get, patch, update]
+  - apiGroups: ['']
+    resources: [configmaps]
+    resourceNames: [opsflow-config, frontend-nginx-config]
+    verbs: [get, patch, update]
+  - apiGroups: [networking.k8s.io]
+    resources: [ingresses]
+    resourceNames: [opsflow]
+    verbs: [get, patch, update]
+  - apiGroups: ['']
+    resources: [pods, events]
+    verbs: [get, list, watch]
+  - apiGroups: ['']
+    resources: [pods/portforward]
+    verbs: [create]
+  # Helm's Secret storage needs these. This also exposes other namespace Secrets.
+  # RBAC cannot restrict create/list to the dynamic Helm release Secret prefix.
+  - apiGroups: ['']
+    resources: [secrets]
+    verbs: [get, list, create, update, patch, delete]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: opsflow-ci-deploy
+  namespace: opsflow
+subjects:
+  - kind: Group
+    name: opsflow-ci-deploy
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: opsflow-ci-deploy
+  apiGroup: rbac.authorization.k8s.io

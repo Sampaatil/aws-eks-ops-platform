@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+      python: 3.12
+  build:
+    commands:
+      - python3 ci/build.py
+artifacts:
+  base-directory: release-artifact
+  files:
+    - release.json
+    - helm/opsflow/**/*
+    - ci/*
+    - tools/*

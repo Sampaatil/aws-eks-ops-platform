@@ -1,0 +1,11 @@
+aws_account_id = "952078551971"
+state_bucket = "YOUR_EXISTING_STATE_BUCKET"
+# Verify the ACTUAL Phase 5 backend key before copying this example.
+phase5_state_key = "opsflow/lab/eks.tfstate"
+github_repository = "Sampaatil/aws-eks-ops-platform"
+branch = "main"
+detect_changes = false
+# Check against all actual VPC subnets before provisioning.
+deploy_subnet_cidr = "10.40.64.0/24"
+kubectl_version = "v1.35.0"
+helm_version = "v3.19.0"
