@@ -195,3 +195,5 @@ No new always-on infrastructure is added, but existing Phase 9 NAT/EIP and AWS l
 Completion requires a real passing security build, reviewed approval, successful Helm deployment and external read-only acceptance. Prepared code, a previous Phase 9 success or a failed security baseline is not Phase 12 completion.
 
 Primary references: [Trivy installation](https://trivy.dev/latest/docs/getting-started/installation/), [Trivy vulnerability scanning](https://trivy.dev/latest/docs/scanner/vulnerability/), [Trivy misconfiguration scanning](https://trivy.dev/latest/docs/scanner/misconfiguration/), [Oxlint CLI](https://oxc.rs/docs/guide/usage/linter.html), [Terraform validate](https://developer.hashicorp.com/terraform/cli/commands/validate), [Terraform provider locks](https://developer.hashicorp.com/terraform/cli/commands/providers/lock). Tool pins are intentional; review scanner supply-chain notices before upgrading.
+
+

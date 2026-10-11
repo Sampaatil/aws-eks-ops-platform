@@ -214,7 +214,8 @@ def dependency_scan(accepted):
         target.mkdir(parents=True, exist_ok=True)
         for name in ('package.json', 'package-lock.json'):
             (target / name).write_bytes((Path(app) / name).read_bytes())
-    scan('source-dependencies', ['fs', '--scanners', 'vuln', '--include-dev-deps', str(staging)], accepted)
+    # Lab policy: scan production dependencies; dev-only packages are outside this blocking gate.
+    scan('source-dependencies', ['fs', '--scanners', 'vuln', str(staging)], accepted)
 
 
 def iac_scan(accepted, helm):
