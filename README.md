@@ -1,332 +1,148 @@
 # OpsFlow — AWS EKS Operations Platform
 
-OpsFlow is a production-oriented DevOps portfolio project designed
-to demonstrate containerized application delivery and operations
-on Amazon EKS.
+An AWS DevOps portfolio project demonstrating container delivery, infrastructure as code, Kubernetes operations, security checks and application observability.
 
-## Project Goals
+OpsFlow combines a React status frontend, a Node.js/Express incident API and PostgreSQL. On AWS, the application runs on Amazon EKS with an external Amazon RDS database. The focus is the operational workflow: reviewed code, scanned images, approved releases, verified deployments and correlated logs and metrics.
 
-The project demonstrates:
+**AWS region:** `ap-south-1` · **Cluster:** `opsflow-lab` · **Helm release / namespace:** `opsflow`
 
-- Docker containerization
-- Kubernetes orchestration
-- Amazon EKS
-- Amazon ECR
-- Terraform infrastructure as code
-- Helm application packaging
-- GitHub Actions CI/CD
-- AWS IAM and OIDC
-- AWS Load Balancer Controller
-- Amazon RDS PostgreSQL
-- AWS Secrets Manager
-- Amazon CloudWatch
-- Prometheus and Grafana
-- Horizontal Pod Autoscaling
-- Container and IaC security scanning
-- Production troubleshooting
-- AWS cost optimization
-
-## Application
-
-OpsFlow is a lightweight incident-management application consisting
-of:
-
-- React frontend
-- Node.js/Express REST API
-- PostgreSQL database
-
-The application is intentionally simple. The primary purpose of the
-project is to demonstrate infrastructure, deployment, reliability,
-security and operational practices.
+Implementation and dated execution reports are included. Historical results describe specific runs; they do not imply the lab is currently online.
 
 ## Architecture
 
-Architecture will evolve throughout the project.
+```mermaid
+flowchart TD
+  Browser["Allowed admin browser"] --> ALB["Application Load Balancer"]
+  ALB --> Front["EKS: React / Nginx"]
+  Front --> API["EKS: Express API"]
+  API --> DB["Private RDS PostgreSQL"]
+  Secret["Namespace Secret + RDS CA"] --> API
+  Front --> Logs["Fluent Bit → CloudWatch Logs"]
+  API --> Logs
+  API --> Metrics["Prometheus: application and Kubernetes metrics"]
+  Metrics --> Grafana["Grafana via local port-forward"]
+```
+
+Terraform owns AWS infrastructure and separate state backends. Helm owns the application release. RDS, application credentials, the CA bundle and the load balancer controller remain external to the application chart.
+
+EKS has private API access and an admin-restricted public endpoint. The private deployment CodeBuild project uses dedicated subnet routing, NAT egress and security-group access to the cluster. It does not receive a public IP.
+
+## Delivery workflow
+
+```mermaid
+flowchart TD
+  Git["Reviewed GitHub main commit"] --> Source["CodeConnections / CodePipeline V2"]
+  Source --> CI["Public CodeBuild: lint, tests, IaC and Trivy"]
+  CI --> Images["Docker builds → image scans → ECR digests"]
+  Images --> Artifact["Completed basic scans + same-commit chart/artifact"]
+  Artifact --> Approval["Manual release approval"]
+  Approval --> CD["Private CodeBuild: evidence checks + Helm"]
+  CD --> Verify["Rollouts + internal frontend/API/RDS acceptance"]
+```
+
+- **Source:** CodeConnections retrieves the exact GitHub commit without a stored GitHub PAT.
+- **Checks:** CI installs locked npm dependencies, runs frontend/backend lint and declared `test:ci` scripts, builds the frontend, validates Terraform and scans secrets, dependencies and static infrastructure configuration.
+- **Images:** Both Linux/amd64 images are scanned before either is pushed. Approved deployment inputs use ECR digests; basic ECR scans must be complete.
+- **Approval:** The operator reviews the source commit, chart, digests, findings and actual test coverage.
+- **Deployment:** CD verifies release evidence and tool checksums, requires an existing healthy release, updates image digests using current Helm values and upgrades with `--atomic --wait`.
+- **Acceptance:** It checks rollout status and read-only frontend/API/database readiness through an internal port-forward.
+- **Recovery:** A post-upgrade HTTP failure requests rollback to the captured prior revision and verifies internal readiness. A recovered failed run remains failed. Helm rollback does not restore database data, schema or external Secrets.
 
-Initial application flow:
+Queued execution and per-project concurrency limits serialize normal pipeline runs. Execution is intentionally on demand; manual approval is retained. Operators must avoid simultaneous manual Helm changes.
 
-Browser -> React -> Express API -> PostgreSQL
+## Security controls
 
-Target AWS flow:
+Build and deploy have separate IAM roles. CI has no EKS or Secrets Manager access. CD has no Secrets Manager IAM access, but Helm's namespace permissions include Secrets and workload changes: deployment permission is a sensitive credential trust boundary.
 
-Internet
--> Application Load Balancer
--> Amazon EKS
--> Kubernetes Services/Pods
--> Amazon RDS PostgreSQL
+Pinned Trivy and Terraform downloads are checksum-verified. Secret and CRITICAL findings block releases. Qualifying HIGH exceptions must be specific, reviewed and unexpired. Sanitized report checksums and image bindings are verified during deployment.
 
-Container images are stored in Amazon ECR.
+The current dependency gate scans production dependencies; development dependencies are outside that blocking gate. Frontend automated tests are not declared. Declared backend tests do not establish RDS integration coverage. See the [security implementation](docs/phase12-devsecops.md) and [validation evidence](docs/phase12-validation.md). The latter records preparation checks and failures, not a complete clean live security execution.
 
-Infrastructure is provisioned using Terraform.
+## Recorded results
 
-Application deployments are automated through GitHub Actions and
-packaged using Helm.
+| Capability | Recorded evidence |
+|---|---|
+| Helm release management | Seven resources adopted; install, upgrade and rollback documented in [Helm results](docs/phase7-results.md) |
+| AWS CI/CD delivery | Execution `795f03ce-1f37-4ff6-8fec-e44f479f1a62` succeeded; Helm revision 5 and matching digest-pinned deployments recorded in [CI/CD results](docs/phase9-results.md) |
+| Centralized logging | Tagged frontend request reached CloudWatch through Fluent Bit using Pod Identity; [observability results](docs/phase10-results.md) |
+| Kubernetes monitoring | 17/17 targets UP, healthy custom rule evaluation and Grafana panels; [observability results](docs/phase10-results.md) |
+| Application error investigation | Five synthetic HTTP 500s, five matching CloudWatch records and Prometheus/Grafana observations; [incident report](docs/phase13-results.md) |
+| Cost assessment | Displayed October baseline USD 19.28; EKS contributes 42.6%; [cost report](docs/phase14-ccost-optimization.md) |
 
-## Repository Structure
+These are dated examples, not a claim of the latest revision or current resource health.
 
-frontend/        React application
-backend/         Node.js REST API
-infrastructure/  Terraform infrastructure
-kubernetes/      Kubernetes manifests
-helm/            Helm charts
-monitoring/      Observability configuration
-scripts/         Operational scripts
-docs/            Architecture and operational documentation
+## Observability and troubleshooting
 
-## Current Status
+Fluent Bit forwards application logs to `/opsflow/opsflow-lab/application`. Prometheus collects availability, CPU, memory, restart and application counters. Grafana dashboards are provisioned through ConfigMaps and accessed locally through port-forwarding.
 
-Phase 1 — Application Foundation
+The controlled error listener binds to Pod loopback, starts disarmed, expires after two minutes and allows at most five synthetic errors per activation. Synthetic traffic is separated from real API metrics. Run/request IDs correlate responses with CloudWatch records; Prometheus and Grafana show associated counters and rates.
 
-- [x] Repository structure
-- [x] React frontend
-- [x] Express API
-- [x] Health endpoint
-- [x] Readiness endpoint
-- [x] PostgreSQL schema
-- [x] Graceful shutdown
-- [x] Basic automated tests
-- [ ] Docker
-- [ ] Kubernetes
-- [ ] AWS infrastructure
-- [ ] EKS
-- [ ] CI/CD
-- [ ] Observability
-- [ ] Security
-- [ ] Production incident simulations
+The incident report records healthy app replicas and database readiness after the exercise. This demonstrates a bounded synthetic investigation, rather than a production outage or comprehensive recovery test.
 
-## API Endpoints
+Two troubleshooting examples:
 
-GET /health
+- **ECR scan initialization:** Bounded retries handled `ScanNotFoundException` immediately after image push, preserving the completed-scan requirement.
+- **Grafana sidecar OOM:** Increasing the sidecar limit from 64Mi to 192Mi resolved the recorded memory issue; the report documents a healthy Pod and zero restarts after upgrade.
 
-GET /ready
+## Technology and repository map
 
-GET /api/incidents
+| Path / area | Tools and purpose |
+|---|---|
+| `frontend/` | React, Vite, Nginx, Dockerfile; platform status UI |
+| `backend/` | Node.js, Express, PostgreSQL client, health/readiness and incident API |
+| `database/`, `compose.yaml` | Local database initialization and Docker Compose |
+| `helm/opsflow/` | AWS application chart |
+| `infrastructure/` | Terraform: state bootstrap, VPC/ECR, EKS/RDS, CI/CD and logging |
+| `kubernetes/` | Local manifests, AWS templates, RBAC and monitoring resources |
+| `ci/`, `security/` | CodeBuild scripts, Trivy policy, evidence contract, tool pins and lint configuration |
+| `scripts/` | PowerShell/Python operational helpers |
+| `docs/` | Runbooks, validation reports and execution evidence |
 
-GET /api/incidents/:id
+AWS services include EKS, EC2, ECR, RDS, ALB, S3, IAM, Secrets Manager, CodePipeline, CodeBuild, CodeConnections and CloudWatch. Monitoring uses Prometheus, Grafana and Fluent Bit.
 
-POST /api/incidents
+## Application and local preview
 
-PATCH /api/incidents/:id/status
+The frontend displays platform/API health and API version. Incident records are managed through the REST API; the current frontend is not a full incident CRUD console.
 
-DELETE /api/incidents/:id
+| Endpoint | Purpose |
+|---|---|
+| `GET /health` | Process health |
+| `GET /ready` | Database connectivity |
+| `GET /api/incidents` | List incidents |
+| `GET /api/incidents/:id` | Read an incident |
+| `POST /api/incidents` | Create an incident |
+| `PATCH /api/incidents/:id/status` | Update status |
+| `DELETE /api/incidents/:id` | Delete an incident |
 
-## Security
+With Docker Desktop and Git installed, run PowerShell from the repository root:
 
-Secrets and credentials must never be committed to this repository.
+```powershell
+Copy-Item .env.example .env
+# Set local database values in .env; keep it out of Git.
+docker compose up --build -d
+docker compose ps
+Invoke-RestMethod http://localhost:8080/health
+Invoke-RestMethod http://localhost:8080/ready
+```
 
-Local configuration uses environment variables.
+Open `http://localhost:8080`. Stop local containers with `docker compose down`; this retains the database volume. Compose/kind use local PostgreSQL. The AWS Helm release uses external RDS. Local commands do not create or delete AWS infrastructure.
 
-AWS workloads will use IAM roles and AWS Secrets Manager where
-appropriate.
+## Deployment and evidence guides
 
-## Cost
+The AWS pipeline deploys an existing Helm release; it does not provision EKS/RDS or bootstrap the first installation. Follow each guide's prerequisite and ownership checks. Discover actual state, account, subnet, image and endpoint values from your environment.
 
-Phase 1 creates no AWS resources and incurs no AWS infrastructure cost.
+- [Application deployment](docs/phase6-real-application-deployment.md)
+- [Helm packaging and adoption](docs/phase7-helm.md)
+- [AWS CI/CD](docs/phase9-ci-cd.md)
+- [DevSecOps gates](docs/phase12-devsecops.md)
+- [Controlled error investigation](docs/phase13-incident-lab.md)
+- [Cost assessment](docs/phase14-ccost-optimization.md)
+- [Portfolio evidence and interview walkthrough](docs/portfolio-guide.md)
 
-AWS resource costs and cleanup procedures will be documented before
-billable resources are provisioned.
+## Lab boundaries and costs
 
-## Phase 2 — Containerization
+This is an operations lab. Configuration includes public worker subnets, admin-restricted HTTP ingress, Single-AZ RDS and Kubernetes-managed app credentials. The application has no authentication. Monitoring storage is ephemeral and retention is bounded. Alert rules are evaluated, but external notifications are not configured.
 
-The application is containerized using Docker and orchestrated locally
-using Docker Compose.
+Internal acceptance does not prove ALB routing. The incident report identifies final browser/disarm confirmations it did not capture. These boundaries matter when interpreting the evidence.
 
-### Services
-
-- Frontend — React production build served through Nginx
-- Backend — Node.js/Express REST API
-- Database — PostgreSQL
-
-### Local Architecture
-
-Browser
--> Nginx frontend
--> Express backend
--> PostgreSQL
-
-Only the frontend is exposed to the host.
-
-Internal communication uses Docker service discovery.
-
-### Container Security
-
-The backend application runs as a non-root user.
-
-Sensitive local configuration is provided through environment
-variables and is excluded from Git and Docker build contexts.
-
-### Health Checks
-
-Backend:
-
-GET /health
-
-verifies application process health.
-
-GET /ready
-
-verifies that the application can connect to PostgreSQL.
-
-### Start
-
-Create the local environment file:
-
-```bash
-cp .env.example .env
-
-## Phase 3 — Kubernetes
-
-OpsFlow now runs on a local Kubernetes cluster using kind.
-
-### Kubernetes Resources
-
-The application uses:
-
-- Namespace
-- Deployments
-- ReplicaSets
-- Pods
-- ClusterIP Services
-- NodePort Service
-- ConfigMaps
-- Kubernetes Secret
-- PersistentVolumeClaim
-- Liveness probes
-- Readiness probes
-- CPU and memory requests
-- CPU and memory limits
-- Rolling updates
-
-### Architecture
-
-Browser
--> NodePort
--> Frontend Service
--> Frontend Pods
--> Backend Service
--> Backend Pods
--> PostgreSQL Service
--> PostgreSQL Pod
--> PersistentVolumeClaim
-
-### Application Namespace
-
-All application workloads run in:
-
-`opsflow`
-
-### Health Model
-
-`/health`
-
-is used for application liveness.
-
-`/ready`
-
-checks PostgreSQL connectivity and determines whether backend Pods
-should receive traffic.
-
-### Local Cluster
-
-The Kubernetes cluster is created using kind.
-
-The locally built application images are loaded into the kind node
-for development.
-
-Production deployment will use Amazon ECR rather than locally loaded
-images.
-
-### Database
-
-PostgreSQL runs inside Kubernetes only for local Kubernetes learning.
-
-The AWS architecture will replace the local PostgreSQL workload with
-Amazon RDS PostgreSQL.
-
-### Production Differences
-
-The local NodePort exposure mechanism is not the target AWS
-architecture.
-
-Amazon EKS will use AWS Load Balancer Controller and an Application
-Load Balancer for application ingress.
-
-## Phase 4 — AWS foundation
-
-Terraform provisions an OpsFlow lab VPC across two AZs, four subnets,
-explicit routing, two private ECR repositories, and a scoped ECR publisher
-policy. Foundation state uses a versioned, encrypted S3 backend with native
-lock files. Bootstrap state is local and backed up securely.
-
-Private subnets currently have no internet egress. EKS/RDS/ALB and private
-node outbound connectivity are subsequent phases. See docs/phase4-aws-foundation.md.
-
-# Phase 5 — EKS Deployment Results
-
-## Environment
-
-- AWS Region: ap-south-1
-- EKS Cluster: opsflow-lab
-- Namespace: opsflow
-- AWS Account: Masked in public documentation
-- Worker Nodes: 2 managed AL2023 nodes
-- Database: Private Amazon RDS PostgreSQL
-- Ingress: AWS Application Load Balancer
-- Controller Identity: EKS Pod Identity
-
-## Deployment Evidence
-
-- EKS Kubernetes Version: Pending verification
-- Node Readiness: Pending final verification
-- Backend Image Digest: Pending final release verification
-- Frontend Image Digest: Pending final verification
-- Source Commit: Pending final commit
-- Backend Deployment Revision: Pending final verification
-
-## Application Validation
-
-- Backend `/health`: Previously verified
-- Backend `/ready`: Previously verified
-- Incident API POST: Previously verified
-- Incident API GET: Previously verified
-- RDS Persistence: Previously verified
-
-## Database Security
-
-- RDS Public Accessibility: Pending final verification
-- Storage Encryption: Pending final verification
-- PostgreSQL TLS Certificate Verification: Previously validated
-- Separate Application Database User: Configured
-- Automated Backup Retention: Pending verification
-
-## Release Security
-
-- ECR Image Scan: Completed
-- Previous Finding: CVE-2026-85091, HIGH, zlib 1.3.2-r0
-- Patched Image Scan: Pending verification
-- Image Digest Pinning: Configured
-
-## Operational Experiments
-
-- Pod Replacement: Pending evidence
-- Rolling Release: Pending final verification
-- Rollback: Pending verification
-- RDS Restore Test: Not performed
-
-## Cost and Teardown
-
-- Cost Observation Window: Pending billing evidence
-- Actual Observed Cost: Pending
-- Teardown: Not performed
-- Remaining Billable Resources: EKS, EC2 workers, ALB, RDS and associated resources require cleanup
-
-## Known Production Gaps
-
-- Public worker nodes
-- HTTP browser transport
-- Single-AZ RDS
-- Kubernetes-managed application database secret
-- No application authentication
-- No tested database restoration
-- No complete production monitoring and alerting stack
-[Phase 9 CI/CD results](docs/phase9-results.md)
+EKS, workers, RDS, ALB, NAT/public IPv4 and storage can continue costing money while the laptop is off. On-demand triggering does not stop those charges. Preserve Terraform state, deployment evidence and rollback images before using the appropriate guide's reviewed teardown. CI/CD-only teardown leaves application infrastructure running. Measured savings are not claimed.
