@@ -1,6 +1,8 @@
 const app = require("./app");
 const config = require("./config/config");
 const pool = require("./db/pool");
+const { incidentLab } = require("./observability/incidentLab");
+const labServer = incidentLab.listen();
 
 const server = app.listen(config.port, "0.0.0.0", () => {
   console.log(
@@ -10,6 +12,9 @@ const server = app.listen(config.port, "0.0.0.0", () => {
 
 async function shutdown(signal) {
   console.log(`${signal} received. Starting graceful shutdown.`);
+
+  labServer.close();
+  labServer.closeAllConnections();
 
   server.close(async () => {
     console.log("HTTP server closed.");

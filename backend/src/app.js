@@ -11,6 +11,8 @@ const incidentRoutes = require("./routes/incidents.routes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
+const { incidentLab } = require("./observability/incidentLab");
+
 const app = express();
 
 app.disable("x-powered-by");
@@ -23,6 +25,8 @@ app.use(
   })
 );
 
+app.use(incidentLab.middleware);
+app.get("/metrics", incidentLab.metrics);
 app.use(express.json({ limit: "1mb" }));
 
 app.get("/", (req, res) => {
