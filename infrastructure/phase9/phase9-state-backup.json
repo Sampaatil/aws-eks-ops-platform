@@ -1,0 +1,2048 @@
+﻿{
+  "version": 4,
+  "terraform_version": "1.16.4",
+  "serial": 3,
+  "lineage": "5d5051af-b48a-f071-c0f5-fc859f84b7a2",
+  "outputs": {
+    "artifact_bucket": {
+      "value": "opsflow-lab-952078551971-ap-south-1-pipeline",
+      "type": "string"
+    },
+    "connection_arn": {
+      "value": "arn:aws:codestar-connections:ap-south-1:952078551971:connection/cd096bcc-dd7d-4f65-ad6c-e5d3039341e7",
+      "type": "string"
+    },
+    "deploy_role_arn": {
+      "value": "arn:aws:iam::952078551971:role/opsflow-lab-cd",
+      "type": "string"
+    },
+    "deploy_subnet_id": {
+      "value": "subnet-02afa545941e1487d",
+      "type": "string"
+    },
+    "nat_gateway_id": {
+      "value": "nat-0a3a424ff6cbe72ee",
+      "type": "string"
+    },
+    "pipeline_name": {
+      "value": "opsflow-lab-application",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_eks_cluster",
+      "name": "existing",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_config": [
+              {
+                "authentication_mode": "API",
+                "bootstrap_cluster_creator_admin_permissions": true
+              }
+            ],
+            "arn": "arn:aws:eks:ap-south-1:952078551971:cluster/opsflow-lab",
+            "certificate_authority": [
+              {
+                "data": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lRWGczWmtjN3d4aDNDZmJmQVFBRG1TVEFOQmdrcWhraUc5dzBCQVFzRkFEQW4KTVJBd0RnWURWUVFLRXdkQlYxTWdSVXRUTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTVRBdwpPVEEzTURjek0xb1hEVE14TVRBd09EQTNNRGN6TTFvd0p6RVFNQTRHQTFVRUNoTUhRVmRUSUVWTFV6RVRNQkVHCkExVUVBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUIKQU1hY3RDRDJmZEQzcS9QanJsSzBSQVNtWGtXSHNKMHFpcnRDVGhmRG1wRW0xYXY4NWNqdmRxM0krdHZla2tXegpSaEI0Y3lmOHFSMTRoblBDaU90U2hzSWt0SlJCQmRQUWpSTDVNRmErZTdOb0V6ZGRlTnB0cGZoZXJlV0dkZTdSClpyY015Q0Z5NEsrUjBlUjhldmVrNHZ2Q3FkQ0JDU2RMYTdjVGNyekp5azZlWFRjbkZxUFJNdlVzcnl4OWtXclUKQ3J2cFNGUExuY05IL283TU1XQjM3K1JPa3BoQWhsZ1Q2ZWk5alBCdGNSaGZRZmlkZG14ZTB6Zk9PeGx5SmZiawpFN0VMZm04R1l4Z2N6TzcvS0tmQTlQWlV2UUIyWW4zbEJZcU4yVHZhblVDRU1MNzJhMzVqd2RZQ1psWi83ektNCi9tYXFKQTV4anB4Vm5YOHg2QXd1WVFrQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWQKRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZFd21PR1dUSExVZ09qS3phSGNLTzNWL2pxQjZNQlVHQTFVZApFUVFPTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBSzRENnZCaEZXV3ZsZXBDCkpkVllFMEZodWJUTWF2aHNTbHYvVU9vR2FWVE45VVJmRW1PeUQrMnY2YzVMcWtxRS9ubEhoTHVQdURvOGhLTXAKamEyVU9JZlQzVFNKT2JPYnp2M0trMVQ1WTNCdVJORWhqNHF6WExaYnJROTdBYjdxSE5ERkVINFR4dXJjVS8zUQpLTXJMWG45RHp6TlQzdWdqV1RWWW9mcnpIVDFZYW55N1czMmlVV0pmZjJwb0dZWkVwbHhNU3laeElNeGt4aHVkCjNUK0tPNUpWR1JLUkRja1lKT3l4d0gyZWJPbEVpNnBLM3BSWW1MNmVObkxSY1pYYjl2Zm5pa2QwRVRCcElRYVgKL3BGZGhvR2tBaThVRWU1ZWpzZFlEa0M3ZTh2Z3o0SHpmSERpQ1dmT1g2U2t4d2JUSXlqWW0xbm54VlQyenJkQwpPSEY4c1YwPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+              }
+            ],
+            "cluster_id": null,
+            "compute_config": [
+              {
+                "enabled": false,
+                "node_pools": [],
+                "node_role_arn": ""
+              }
+            ],
+            "control_plane_scaling_config": [
+              {
+                "tier": "standard"
+              }
+            ],
+            "created_at": "2026-10-09T07:07:25Z",
+            "deletion_protection": false,
+            "enabled_cluster_log_types": [
+              "api",
+              "audit",
+              "authenticator"
+            ],
+            "endpoint": "https://48C74F86AA8A114D278E9BBE38E6C996.yl4.ap-south-1.eks.amazonaws.com",
+            "id": "opsflow-lab",
+            "identity": [
+              {
+                "oidc": [
+                  {
+                    "issuer": "https://oidc.eks.ap-south-1.amazonaws.com/id/48C74F86AA8A114D278E9BBE38E6C996"
+                  }
+                ]
+              }
+            ],
+            "kube_api_server_config": [
+              {
+                "event_ttl": "60m",
+                "service_node_port_range": [
+                  {
+                    "max_port": 32767,
+                    "min_port": 30000
+                  }
+                ]
+              }
+            ],
+            "kube_controller_manager_config": [
+              {
+                "horizontal_pod_autoscaler_controller_config": [
+                  {
+                    "horizontal_pod_autoscaler_sync_period": "15s"
+                  }
+                ],
+                "pod_gc_controller_config": [
+                  {
+                    "terminated_pod_gc_threshold": 12500
+                  }
+                ]
+              }
+            ],
+            "kube_scheduler_config": [
+              {
+                "node_resources_fit": [
+                  {
+                    "scoring_strategy": [
+                      {
+                        "resource": [
+                          {
+                            "name": "cpu",
+                            "weight": 1
+                          },
+                          {
+                            "name": "memory",
+                            "weight": 1
+                          }
+                        ],
+                        "type": "LeastAllocated"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "kubernetes_network_config": [
+              {
+                "elastic_load_balancing": [
+                  {
+                    "enabled": false
+                  }
+                ],
+                "ip_family": "ipv4",
+                "service_ipv4_cidr": "172.20.0.0/16",
+                "service_ipv6_cidr": ""
+              }
+            ],
+            "name": "opsflow-lab",
+            "outpost_config": [],
+            "platform_version": "eks.24",
+            "region": "ap-south-1",
+            "remote_network_config": [],
+            "role_arn": "arn:aws:iam::952078551971:role/opsflow-lab-eks-cluster",
+            "status": "ACTIVE",
+            "storage_config": [
+              {
+                "block_storage": [
+                  {
+                    "enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "5",
+              "Project": "opsflow"
+            },
+            "upgrade_policy": [
+              {
+                "support_type": "STANDARD"
+              }
+            ],
+            "version": "1.35",
+            "vpc_config": [
+              {
+                "cluster_security_group_id": "sg-05fc1c8c354758701",
+                "control_plane_egress_mode": "AWS_MANAGED",
+                "endpoint_private_access": true,
+                "endpoint_public_access": true,
+                "public_access_cidrs": [
+                  "103.174.141.212/32"
+                ],
+                "security_group_ids": [
+                  "sg-08b70af147c20d854"
+                ],
+                "subnet_ids": [
+                  "subnet-0152d890083b2aa2d",
+                  "subnet-09e8e721a27db0ed2"
+                ],
+                "vpc_id": "vpc-0436dcec20eee001b"
+              }
+            ],
+            "zonal_shift_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_subnet",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:subnet/subnet-042faa30dffe7d2b0",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-south-1a",
+            "availability_zone_id": "aps1-az1",
+            "available_ip_address_count": 238,
+            "cidr_block": "10.40.0.0/24",
+            "customer_owned_ipv4_pool": "",
+            "default_for_az": false,
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "filter": null,
+            "id": "subnet-042faa30dffe7d2b0",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "952078551971",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "region": "ap-south-1",
+            "state": "available",
+            "tags": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Name": "opsflow-lab-public-a",
+              "Project": "opsflow",
+              "kubernetes.io/role/elb": "1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0436dcec20eee001b"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "eks",
+      "provider": "provider[\"terraform.io/builtin/terraform\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "opsflow-tfstate-952078551971-ap-south-1",
+                "key": "opsflow/lab/eks.tfstate",
+                "region": "ap-south-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "app_database_secret_arn": "arn:aws:secretsmanager:ap-south-1:952078551971:secret:opsflow/lab/database-app-IWt9hP",
+                "cluster_endpoint": "https://48C74F86AA8A114D278E9BBE38E6C996.yl4.ap-south-1.eks.amazonaws.com",
+                "cluster_name": "opsflow-lab",
+                "ecr_repository_urls": {
+                  "backend": "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-backend",
+                  "frontend": "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-frontend"
+                },
+                "final_snapshot_identifier": "opsflow-lab-final-20261008-111030",
+                "lbc_role_arn": "arn:aws:iam::952078551971:role/opsflow-lab-lbc",
+                "node_security_group_id": "sg-0c0cdca63c701fd06",
+                "public_subnet_ids": [
+                  "subnet-042faa30dffe7d2b0",
+                  "subnet-0ca0a16e705f31bb1"
+                ],
+                "rds_address": "opsflow-lab-postgres.c3m2k4gu8tlr.ap-south-1.rds.amazonaws.com",
+                "rds_identifier": "opsflow-lab-postgres",
+                "rds_master_secret_arn": "arn:aws:secretsmanager:ap-south-1:952078551971:secret:rds!db-ae774f82-3737-4fea-8264-e65f50ff4467-h3PaS2",
+                "vpc_id": "vpc-0436dcec20eee001b"
+              },
+              "type": [
+                "object",
+                {
+                  "app_database_secret_arn": "string",
+                  "cluster_endpoint": "string",
+                  "cluster_name": "string",
+                  "ecr_repository_urls": [
+                    "object",
+                    {
+                      "backend": "string",
+                      "frontend": "string"
+                    }
+                  ],
+                  "final_snapshot_identifier": "string",
+                  "lbc_role_arn": "string",
+                  "node_security_group_id": "string",
+                  "public_subnet_ids": [
+                    "tuple",
+                    [
+                      "string",
+                      "string"
+                    ]
+                  ],
+                  "rds_address": "string",
+                  "rds_identifier": "string",
+                  "rds_master_secret_arn": "string",
+                  "vpc_id": "string"
+                }
+              ]
+            },
+            "workspace": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "build",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "cd",
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:ap-south-1:952078551971:log-group:/aws/codebuild/opsflow-lab-cd",
+            "deletion_protection_enabled": false,
+            "id": "/aws/codebuild/opsflow-lab-cd",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "/aws/codebuild/opsflow-lab-cd",
+            "name_prefix": "",
+            "region": "ap-south-1",
+            "retention_in_days": 7,
+            "skip_destroy": false,
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            }
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "/aws/codebuild/opsflow-lab-cd",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA=="
+        },
+        {
+          "index_key": "ci",
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:ap-south-1:952078551971:log-group:/aws/codebuild/opsflow-lab-ci",
+            "deletion_protection_enabled": false,
+            "id": "/aws/codebuild/opsflow-lab-ci",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "/aws/codebuild/opsflow-lab-ci",
+            "name_prefix": "",
+            "region": "ap-south-1",
+            "retention_in_days": 7,
+            "skip_destroy": false,
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            }
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "/aws/codebuild/opsflow-lab-ci",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_codebuild_project",
+      "name": "build",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "cd",
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-cd",
+            "artifacts": [
+              {
+                "artifact_identifier": "",
+                "bucket_owner_access": "",
+                "encryption_disabled": false,
+                "location": "",
+                "name": "opsflow-lab-cd",
+                "namespace_type": "",
+                "override_artifact_name": false,
+                "packaging": "NONE",
+                "path": "",
+                "type": "CODEPIPELINE"
+              }
+            ],
+            "auto_retry_limit": 0,
+            "badge_enabled": false,
+            "badge_url": "",
+            "build_batch_config": [],
+            "build_timeout": 40,
+            "cache": [
+              {
+                "cache_namespace": "",
+                "location": "",
+                "modes": [],
+                "type": "NO_CACHE"
+              }
+            ],
+            "concurrent_build_limit": 1,
+            "description": "",
+            "encryption_key": "arn:aws:kms:ap-south-1:952078551971:alias/aws/s3",
+            "environment": [
+              {
+                "certificate": "",
+                "compute_type": "BUILD_GENERAL1_SMALL",
+                "docker_server": [],
+                "environment_variable": [
+                  {
+                    "name": "AWS_REGION",
+                    "type": "PLAINTEXT",
+                    "value": "ap-south-1"
+                  },
+                  {
+                    "name": "BACKEND_REPOSITORY",
+                    "type": "PLAINTEXT",
+                    "value": "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-backend"
+                  },
+                  {
+                    "name": "EKS_CLUSTER",
+                    "type": "PLAINTEXT",
+                    "value": "opsflow-lab"
+                  },
+                  {
+                    "name": "EXPECTED_ACCOUNT",
+                    "type": "PLAINTEXT",
+                    "value": "952078551971"
+                  },
+                  {
+                    "name": "FRONTEND_REPOSITORY",
+                    "type": "PLAINTEXT",
+                    "value": "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-frontend"
+                  },
+                  {
+                    "name": "HELM_VERSION",
+                    "type": "PLAINTEXT",
+                    "value": "v3.19.0"
+                  },
+                  {
+                    "name": "KUBECTL_VERSION",
+                    "type": "PLAINTEXT",
+                    "value": "v1.35.0"
+                  }
+                ],
+                "fleet": [],
+                "host_kernel": "",
+                "image": "aws/codebuild/standard:7.0",
+                "image_pull_credentials_type": "CODEBUILD",
+                "privileged_mode": false,
+                "registry_credential": [],
+                "type": "LINUX_CONTAINER"
+              }
+            ],
+            "file_system_locations": [],
+            "id": "arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-cd",
+            "logs_config": [
+              {
+                "cloudwatch_logs": [
+                  {
+                    "group_name": "/aws/codebuild/opsflow-lab-cd",
+                    "status": "ENABLED",
+                    "stream_name": "build"
+                  }
+                ],
+                "s3_logs": [
+                  {
+                    "bucket_owner_access": "",
+                    "encryption_disabled": false,
+                    "location": "",
+                    "status": "DISABLED"
+                  }
+                ]
+              }
+            ],
+            "name": "opsflow-lab-cd",
+            "project_visibility": "PRIVATE",
+            "public_project_alias": "",
+            "queued_timeout": 30,
+            "region": "ap-south-1",
+            "resource_access_role": "",
+            "secondary_artifacts": [],
+            "secondary_source_version": [],
+            "secondary_sources": [],
+            "service_role": "arn:aws:iam::952078551971:role/opsflow-lab-cd",
+            "source": [
+              {
+                "auth": [],
+                "build_status_config": [],
+                "buildspec": "ci/buildspec-cd.yml",
+                "git_clone_depth": 0,
+                "git_submodules_config": [],
+                "insecure_ssl": false,
+                "location": "",
+                "report_build_status": false,
+                "type": "CODEPIPELINE"
+              }
+            ],
+            "source_version": "",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "vpc_config": [
+              {
+                "security_group_ids": [
+                  "sg-043e8abab9fd9b489"
+                ],
+                "subnets": [
+                  "subnet-02afa545941e1487d"
+                ],
+                "vpc_id": "vpc-0436dcec20eee001b"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "arn": "arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-cd"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_cloudwatch_log_group.build",
+            "aws_eip.nat",
+            "aws_iam_role.build",
+            "aws_iam_role_policy.cd",
+            "aws_iam_role_policy.ci",
+            "aws_iam_role_policy.common",
+            "aws_nat_gateway.deploy",
+            "aws_route.egress",
+            "aws_route_table.deploy",
+            "aws_route_table_association.deploy",
+            "aws_s3_bucket.artifacts",
+            "aws_security_group.deploy",
+            "aws_subnet.deploy",
+            "data.aws_eks_cluster.existing",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        },
+        {
+          "index_key": "ci",
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-ci",
+            "artifacts": [
+              {
+                "artifact_identifier": "",
+                "bucket_owner_access": "",
+                "encryption_disabled": false,
+                "location": "",
+                "name": "opsflow-lab-ci",
+                "namespace_type": "",
+                "override_artifact_name": false,
+                "packaging": "NONE",
+                "path": "",
+                "type": "CODEPIPELINE"
+              }
+            ],
+            "auto_retry_limit": 0,
+            "badge_enabled": false,
+            "badge_url": "",
+            "build_batch_config": [],
+            "build_timeout": 45,
+            "cache": [
+              {
+                "cache_namespace": "",
+                "location": "",
+                "modes": [],
+                "type": "NO_CACHE"
+              }
+            ],
+            "concurrent_build_limit": 1,
+            "description": "",
+            "encryption_key": "arn:aws:kms:ap-south-1:952078551971:alias/aws/s3",
+            "environment": [
+              {
+                "certificate": "",
+                "compute_type": "BUILD_GENERAL1_SMALL",
+                "docker_server": [],
+                "environment_variable": [
+                  {
+                    "name": "AWS_REGION",
+                    "type": "PLAINTEXT",
+                    "value": "ap-south-1"
+                  },
+                  {
+                    "name": "BACKEND_REPOSITORY",
+                    "type": "PLAINTEXT",
+                    "value": "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-backend"
+                  },
+                  {
+                    "name": "EKS_CLUSTER",
+                    "type": "PLAINTEXT",
+                    "value": "opsflow-lab"
+                  },
+                  {
+                    "name": "EXPECTED_ACCOUNT",
+                    "type": "PLAINTEXT",
+                    "value": "952078551971"
+                  },
+                  {
+                    "name": "FRONTEND_REPOSITORY",
+                    "type": "PLAINTEXT",
+                    "value": "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-frontend"
+                  },
+                  {
+                    "name": "HELM_VERSION",
+                    "type": "PLAINTEXT",
+                    "value": "v3.19.0"
+                  },
+                  {
+                    "name": "KUBECTL_VERSION",
+                    "type": "PLAINTEXT",
+                    "value": "v1.35.0"
+                  }
+                ],
+                "fleet": [],
+                "host_kernel": "",
+                "image": "aws/codebuild/standard:7.0",
+                "image_pull_credentials_type": "CODEBUILD",
+                "privileged_mode": true,
+                "registry_credential": [],
+                "type": "LINUX_CONTAINER"
+              }
+            ],
+            "file_system_locations": [],
+            "id": "arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-ci",
+            "logs_config": [
+              {
+                "cloudwatch_logs": [
+                  {
+                    "group_name": "/aws/codebuild/opsflow-lab-ci",
+                    "status": "ENABLED",
+                    "stream_name": "build"
+                  }
+                ],
+                "s3_logs": [
+                  {
+                    "bucket_owner_access": "",
+                    "encryption_disabled": false,
+                    "location": "",
+                    "status": "DISABLED"
+                  }
+                ]
+              }
+            ],
+            "name": "opsflow-lab-ci",
+            "project_visibility": "PRIVATE",
+            "public_project_alias": "",
+            "queued_timeout": 30,
+            "region": "ap-south-1",
+            "resource_access_role": "",
+            "secondary_artifacts": [],
+            "secondary_source_version": [],
+            "secondary_sources": [],
+            "service_role": "arn:aws:iam::952078551971:role/opsflow-lab-ci",
+            "source": [
+              {
+                "auth": [],
+                "build_status_config": [],
+                "buildspec": "ci/buildspec-ci.yml",
+                "git_clone_depth": 0,
+                "git_submodules_config": [],
+                "insecure_ssl": false,
+                "location": "",
+                "report_build_status": false,
+                "type": "CODEPIPELINE"
+              }
+            ],
+            "source_version": "",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "arn": "arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-ci"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_cloudwatch_log_group.build",
+            "aws_eip.nat",
+            "aws_iam_role.build",
+            "aws_iam_role_policy.cd",
+            "aws_iam_role_policy.ci",
+            "aws_iam_role_policy.common",
+            "aws_nat_gateway.deploy",
+            "aws_route.egress",
+            "aws_route_table.deploy",
+            "aws_route_table_association.deploy",
+            "aws_s3_bucket.artifacts",
+            "aws_security_group.deploy",
+            "aws_subnet.deploy",
+            "data.aws_eks_cluster.existing",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_codepipeline",
+      "name": "app",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:codepipeline:ap-south-1:952078551971:opsflow-lab-application",
+            "artifact_store": [
+              {
+                "encryption_key": [],
+                "location": "opsflow-lab-952078551971-ap-south-1-pipeline",
+                "region": "",
+                "type": "S3"
+              }
+            ],
+            "execution_mode": "QUEUED",
+            "id": "opsflow-lab-application",
+            "name": "opsflow-lab-application",
+            "pipeline_type": "V2",
+            "region": "ap-south-1",
+            "role_arn": "arn:aws:iam::952078551971:role/opsflow-lab-pipeline",
+            "stage": [
+              {
+                "action": [
+                  {
+                    "category": "Source",
+                    "commands": null,
+                    "configuration": {
+                      "BranchName": "main",
+                      "ConnectionArn": "arn:aws:codestar-connections:ap-south-1:952078551971:connection/cd096bcc-dd7d-4f65-ad6c-e5d3039341e7",
+                      "DetectChanges": "false",
+                      "FullRepositoryId": "Sampaatil/aws-eks-ops-platform",
+                      "OutputArtifactFormat": "CODE_ZIP"
+                    },
+                    "input_artifacts": null,
+                    "name": "GitHub",
+                    "namespace": "SourceVars",
+                    "output_artifacts": [
+                      "Source"
+                    ],
+                    "output_artifacts_for_compute_action": [],
+                    "output_variables": null,
+                    "owner": "AWS",
+                    "provider": "CodeStarSourceConnection",
+                    "region": "",
+                    "role_arn": "",
+                    "run_order": 1,
+                    "timeout_in_minutes": 0,
+                    "version": "1"
+                  }
+                ],
+                "before_entry": [],
+                "name": "Source",
+                "on_failure": [],
+                "on_success": []
+              },
+              {
+                "action": [
+                  {
+                    "category": "Build",
+                    "commands": null,
+                    "configuration": {
+                      "EnvironmentVariables": "[{\"name\":\"GIT_COMMIT\",\"type\":\"PLAINTEXT\",\"value\":\"#{SourceVars.CommitId}\"}]",
+                      "ProjectName": "opsflow-lab-ci"
+                    },
+                    "input_artifacts": [
+                      "Source"
+                    ],
+                    "name": "Build",
+                    "namespace": "",
+                    "output_artifacts": [
+                      "Release"
+                    ],
+                    "output_artifacts_for_compute_action": [],
+                    "output_variables": null,
+                    "owner": "AWS",
+                    "provider": "CodeBuild",
+                    "region": "",
+                    "role_arn": "",
+                    "run_order": 1,
+                    "timeout_in_minutes": 0,
+                    "version": "1"
+                  }
+                ],
+                "before_entry": [],
+                "name": "BuildAndScan",
+                "on_failure": [],
+                "on_success": []
+              },
+              {
+                "action": [
+                  {
+                    "category": "Approval",
+                    "commands": null,
+                    "configuration": {
+                      "CustomData": "Review source SHA, release.json, scan counts, test coverage and Helm changes. Approve only this execution."
+                    },
+                    "input_artifacts": null,
+                    "name": "ReviewRelease",
+                    "namespace": "",
+                    "output_artifacts": null,
+                    "output_artifacts_for_compute_action": [],
+                    "output_variables": null,
+                    "owner": "AWS",
+                    "provider": "Manual",
+                    "region": "",
+                    "role_arn": "",
+                    "run_order": 1,
+                    "timeout_in_minutes": 0,
+                    "version": "1"
+                  }
+                ],
+                "before_entry": [],
+                "name": "Approve",
+                "on_failure": [],
+                "on_success": []
+              },
+              {
+                "action": [
+                  {
+                    "category": "Build",
+                    "commands": null,
+                    "configuration": {
+                      "ProjectName": "opsflow-lab-cd"
+                    },
+                    "input_artifacts": [
+                      "Release"
+                    ],
+                    "name": "Helm",
+                    "namespace": "",
+                    "output_artifacts": [
+                      "DeploymentEvidence"
+                    ],
+                    "output_artifacts_for_compute_action": [],
+                    "output_variables": null,
+                    "owner": "AWS",
+                    "provider": "CodeBuild",
+                    "region": "",
+                    "role_arn": "",
+                    "run_order": 1,
+                    "timeout_in_minutes": 0,
+                    "version": "1"
+                  }
+                ],
+                "before_entry": [],
+                "name": "Deploy",
+                "on_failure": [],
+                "on_success": []
+              }
+            ],
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "trigger": [],
+            "trigger_all": [],
+            "variable": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "opsflow-lab-application",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_cloudwatch_log_group.build",
+            "aws_codebuild_project.build",
+            "aws_codestarconnections_connection.github",
+            "aws_eip.nat",
+            "aws_iam_role.build",
+            "aws_iam_role.pipeline",
+            "aws_iam_role_policy.cd",
+            "aws_iam_role_policy.ci",
+            "aws_iam_role_policy.common",
+            "aws_iam_role_policy.pipeline",
+            "aws_nat_gateway.deploy",
+            "aws_route.egress",
+            "aws_route_table.deploy",
+            "aws_route_table_association.deploy",
+            "aws_s3_bucket.artifacts",
+            "aws_s3_bucket_policy.tls",
+            "aws_s3_bucket_public_access_block.artifacts",
+            "aws_s3_bucket_server_side_encryption_configuration.artifacts",
+            "aws_security_group.deploy",
+            "aws_subnet.deploy",
+            "data.aws_eks_cluster.existing",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_codestarconnections_connection",
+      "name": "github",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:codestar-connections:ap-south-1:952078551971:connection/cd096bcc-dd7d-4f65-ad6c-e5d3039341e7",
+            "connection_status": "PENDING",
+            "host_arn": "",
+            "id": "arn:aws:codestar-connections:ap-south-1:952078551971:connection/cd096bcc-dd7d-4f65-ad6c-e5d3039341e7",
+            "name": "opsflow-github",
+            "provider_type": "GitHub",
+            "region": "ap-south-1",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            }
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "arn": "arn:aws:codestar-connections:ap-south-1:952078551971:connection/cd096bcc-dd7d-4f65-ad6c-e5d3039341e7"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_eip",
+      "name": "nat",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "address": null,
+            "allocation_id": "eipalloc-0b2180516826392dc",
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:elastic-ip/eipalloc-0b2180516826392dc",
+            "associate_with_private_ip": null,
+            "association_id": "",
+            "carrier_ip": "",
+            "customer_owned_ip": "",
+            "customer_owned_ipv4_pool": "",
+            "domain": "vpc",
+            "id": "eipalloc-0b2180516826392dc",
+            "instance": "",
+            "ipam_pool_id": "",
+            "network_border_group": "ap-south-1",
+            "network_interface": "",
+            "private_dns": "",
+            "private_ip": "",
+            "ptr_record": "",
+            "public_dns": "ec2-13-206-164-216.ap-south-1.compute.amazonaws.com",
+            "public_ip": "13.206.164.216",
+            "public_ipv4_pool": "amazon",
+            "region": "ap-south-1",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "eipalloc-0b2180516826392dc",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxODAwMDAwMDAwMDAsInJlYWQiOjkwMDAwMDAwMDAwMCwidXBkYXRlIjozMDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_eks_access_entry",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_entry_arn": "arn:aws:eks:ap-south-1:952078551971:access-entry/opsflow-lab/role/952078551971/opsflow-lab-cd/ded094d0-4857-3d13-e48f-b5a4b631fee7",
+            "cluster_name": "opsflow-lab",
+            "created_at": "2026-10-11T06:22:31Z",
+            "id": "opsflow-lab:arn:aws:iam::952078551971:role/opsflow-lab-cd",
+            "kubernetes_groups": [
+              "opsflow-ci-deploy"
+            ],
+            "modified_at": "2026-10-11T06:22:31Z",
+            "principal_arn": "arn:aws:iam::952078551971:role/opsflow-lab-cd",
+            "region": "ap-south-1",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null,
+            "type": "STANDARD",
+            "user_name": "arn:aws:sts::952078551971:assumed-role/opsflow-lab-cd/{{SessionName}}"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "cluster_name": "opsflow-lab",
+            "principal_arn": "arn:aws:iam::952078551971:role/opsflow-lab-cd",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "aws_iam_role.build",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "build",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "cd",
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::952078551971:role/opsflow-lab-cd",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Condition\":{\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-*\"},\"StringEquals\":{\"aws:SourceAccount\":\"952078551971\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codebuild.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2026-10-11T06:22:20Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "opsflow-lab-cd",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "opsflow-lab-cd",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "unique_id": "AROA53LCNZORSZICLU2ZL"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "opsflow-lab-cd"
+          },
+          "private": "bnVsbA=="
+        },
+        {
+          "index_key": "ci",
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::952078551971:role/opsflow-lab-ci",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Condition\":{\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-*\"},\"StringEquals\":{\"aws:SourceAccount\":\"952078551971\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codebuild.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2026-10-11T06:22:20Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "opsflow-lab-ci",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "opsflow-lab-ci",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "unique_id": "AROA53LCNZOR7OFSBSK72"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "opsflow-lab-ci"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "pipeline",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::952078551971:role/opsflow-lab-pipeline",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codepipeline.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2026-10-11T06:22:20Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "opsflow-lab-pipeline",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "opsflow-lab-pipeline",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "unique_id": "AROA53LCNZOR3GAW7TJBT"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "opsflow-lab-pipeline"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "cd",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "opsflow-lab-cd:terraform-5e0adb08361b2e74db55101efe",
+            "name": "terraform-5e0adb08361b2e74db55101efe",
+            "name_prefix": "terraform-",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"eks:DescribeCluster\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:eks:ap-south-1:952078551971:cluster/opsflow-lab\"},{\"Action\":[\"ecr:DescribeImages\",\"ecr:DescribeImageScanFindings\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:ecr:ap-south-1:952078551971:repository/opsflow-lab-backend\",\"arn:aws:ecr:ap-south-1:952078551971:repository/opsflow-lab-frontend\"]},{\"Action\":[\"ec2:CreateNetworkInterface\",\"ec2:DeleteNetworkInterface\",\"ec2:DescribeNetworkInterfaces\",\"ec2:DescribeSubnets\",\"ec2:DescribeSecurityGroups\",\"ec2:DescribeDhcpOptions\",\"ec2:DescribeVpcs\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"ec2:CreateNetworkInterfacePermission\"],\"Condition\":{\"StringEquals\":{\"ec2:AuthorizedService\":\"codebuild.amazonaws.com\",\"ec2:Subnet\":\"arn:aws:ec2:ap-south-1:952078551971:subnet/subnet-02afa545941e1487d\"}},\"Effect\":\"Allow\",\"Resource\":\"arn:aws:ec2:ap-south-1:952078551971:network-interface/*\"}]}",
+            "role": "opsflow-lab-cd"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "terraform-5e0adb08361b2e74db55101efe",
+            "role": "opsflow-lab-cd"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.build",
+            "aws_subnet.deploy",
+            "data.aws_eks_cluster.existing",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "ci",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "opsflow-lab-ci:terraform-a4a96f06a5279e93d8c4441e0c",
+            "name": "terraform-a4a96f06a5279e93d8c4441e0c",
+            "name_prefix": "terraform-",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ecr:GetAuthorizationToken\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"ecr:BatchCheckLayerAvailability\",\"ecr:InitiateLayerUpload\",\"ecr:UploadLayerPart\",\"ecr:CompleteLayerUpload\",\"ecr:PutImage\",\"ecr:DescribeImages\",\"ecr:DescribeImageScanFindings\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:ecr:ap-south-1:952078551971:repository/opsflow-lab-backend\",\"arn:aws:ecr:ap-south-1:952078551971:repository/opsflow-lab-frontend\"]}]}",
+            "role": "opsflow-lab-ci"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "terraform-a4a96f06a5279e93d8c4441e0c",
+            "role": "opsflow-lab-ci"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.build",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "common",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "cd",
+          "schema_version": 0,
+          "attributes": {
+            "id": "opsflow-lab-cd:terraform-81a1e98b554bc0a7762f79c643",
+            "name": "terraform-81a1e98b554bc0a7762f79c643",
+            "name_prefix": "terraform-",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:ap-south-1:952078551971:log-group:/aws/codebuild/opsflow-lab-cd:*\"},{\"Action\":[\"s3:GetBucketLocation\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline\"},{\"Action\":[\"s3:GetObject\",\"s3:GetObjectVersion\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline/*\"}]}",
+            "role": "opsflow-lab-cd"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "terraform-81a1e98b554bc0a7762f79c643",
+            "role": "opsflow-lab-cd"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_cloudwatch_log_group.build",
+            "aws_iam_role.build",
+            "aws_s3_bucket.artifacts"
+          ]
+        },
+        {
+          "index_key": "ci",
+          "schema_version": 0,
+          "attributes": {
+            "id": "opsflow-lab-ci:terraform-96b8956bc2c971137a4f77a3e4",
+            "name": "terraform-96b8956bc2c971137a4f77a3e4",
+            "name_prefix": "terraform-",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:ap-south-1:952078551971:log-group:/aws/codebuild/opsflow-lab-ci:*\"},{\"Action\":[\"s3:GetBucketLocation\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline\"},{\"Action\":[\"s3:GetObject\",\"s3:GetObjectVersion\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline/*\"}]}",
+            "role": "opsflow-lab-ci"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "terraform-96b8956bc2c971137a4f77a3e4",
+            "role": "opsflow-lab-ci"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_cloudwatch_log_group.build",
+            "aws_iam_role.build",
+            "aws_s3_bucket.artifacts"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "pipeline",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "opsflow-lab-pipeline:terraform-cd1b3c47220418349e701deb8b",
+            "name": "terraform-cd1b3c47220418349e701deb8b",
+            "name_prefix": "terraform-",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"codeconnections:UseConnection\",\"codestar-connections:UseConnection\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:codestar-connections:ap-south-1:952078551971:connection/cd096bcc-dd7d-4f65-ad6c-e5d3039341e7\"},{\"Action\":[\"s3:GetBucketLocation\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline\"},{\"Action\":[\"s3:GetObject\",\"s3:GetObjectVersion\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline/*\"},{\"Action\":[\"codebuild:StartBuild\",\"codebuild:BatchGetBuilds\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-cd\",\"arn:aws:codebuild:ap-south-1:952078551971:project/opsflow-lab-ci\"]}]}",
+            "role": "opsflow-lab-pipeline"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "name": "terraform-cd1b3c47220418349e701deb8b",
+            "role": "opsflow-lab-pipeline"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_cloudwatch_log_group.build",
+            "aws_codebuild_project.build",
+            "aws_codestarconnections_connection.github",
+            "aws_eip.nat",
+            "aws_iam_role.build",
+            "aws_iam_role.pipeline",
+            "aws_iam_role_policy.cd",
+            "aws_iam_role_policy.ci",
+            "aws_iam_role_policy.common",
+            "aws_nat_gateway.deploy",
+            "aws_route.egress",
+            "aws_route_table.deploy",
+            "aws_route_table_association.deploy",
+            "aws_s3_bucket.artifacts",
+            "aws_security_group.deploy",
+            "aws_subnet.deploy",
+            "data.aws_eks_cluster.existing",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_nat_gateway",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allocation_id": "eipalloc-0b2180516826392dc",
+            "association_id": "eipassoc-0271c5cd3811c0f65",
+            "auto_provision_zones": null,
+            "auto_scaling_ips": null,
+            "availability_mode": "zonal",
+            "availability_zone_address": [],
+            "connectivity_type": "public",
+            "id": "nat-0a3a424ff6cbe72ee",
+            "network_interface_id": "eni-0b6cb14892efacf95",
+            "private_ip": "10.40.0.120",
+            "public_ip": "13.206.164.216",
+            "region": "ap-south-1",
+            "regional_nat_gateway_address": [],
+            "regional_nat_gateway_auto_mode": null,
+            "route_table_id": null,
+            "secondary_allocation_ids": [],
+            "secondary_private_ip_address_count": 0,
+            "secondary_private_ip_addresses": [],
+            "subnet_id": "subnet-042faa30dffe7d2b0",
+            "tags": {
+              "Name": "opsflow-lab-ci-nat"
+            },
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Name": "opsflow-lab-ci-nat",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0436dcec20eee001b"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "nat-0a3a424ff6cbe72ee",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTgwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "aws_eip.nat",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route",
+      "name": "egress",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "carrier_gateway_id": "",
+            "core_network_arn": "",
+            "destination_cidr_block": "0.0.0.0/0",
+            "destination_ipv6_cidr_block": "",
+            "destination_prefix_list_id": "",
+            "egress_only_gateway_id": "",
+            "gateway_id": "",
+            "id": "r-rtb-082dc34a0d813fdae1080289494",
+            "instance_id": "",
+            "instance_owner_id": "",
+            "local_gateway_id": "",
+            "nat_gateway_id": "nat-0a3a424ff6cbe72ee",
+            "network_interface_id": "",
+            "odb_network_arn": "",
+            "origin": "CreateRoute",
+            "region": "ap-south-1",
+            "route_table_id": "rtb-082dc34a0d813fdae",
+            "state": "active",
+            "timeouts": null,
+            "transit_gateway_id": "",
+            "vpc_endpoint_id": "",
+            "vpc_peering_connection_id": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "destination_cidr_block": "0.0.0.0/0",
+            "destination_ipv6_cidr_block": null,
+            "destination_prefix_list_id": null,
+            "region": "ap-south-1",
+            "route_table_id": "rtb-082dc34a0d813fdae"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_eip.nat",
+            "aws_nat_gateway.deploy",
+            "aws_route_table.deploy",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:route-table/rtb-082dc34a0d813fdae",
+            "id": "rtb-082dc34a0d813fdae",
+            "owner_id": "952078551971",
+            "propagating_vgws": [],
+            "region": "ap-south-1",
+            "route": [],
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0436dcec20eee001b"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "rtb-082dc34a0d813fdae",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-002c917659a1b7158",
+            "region": "ap-south-1",
+            "route_table_id": "rtb-082dc34a0d813fdae",
+            "subnet_id": "subnet-02afa545941e1487d",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "rtbassoc-002c917659a1b7158",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_route_table.deploy",
+            "aws_subnet.deploy",
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "artifacts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "bucket_domain_name": "opsflow-lab-952078551971-ap-south-1-pipeline.s3.amazonaws.com",
+            "bucket_namespace": "global",
+            "bucket_prefix": "",
+            "bucket_region": "ap-south-1",
+            "bucket_regional_domain_name": "opsflow-lab-952078551971-ap-south-1-pipeline.s3.ap-south-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "297920c977ab9f53843349fc930c55fd16f4ff45ddac067a29563ca49ec59346",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z11RGJOFQNVJUP",
+            "id": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "ap-south-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_lifecycle_configuration",
+      "name": "artifacts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "expected_bucket_owner": "",
+            "id": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1",
+            "rule": [
+              {
+                "abort_incomplete_multipart_upload": [
+                  {
+                    "days_after_initiation": 1
+                  }
+                ],
+                "expiration": [
+                  {
+                    "date": null,
+                    "days": 30,
+                    "expired_object_delete_marker": false
+                  }
+                ],
+                "filter": [
+                  {
+                    "and": [],
+                    "object_size_greater_than": null,
+                    "object_size_less_than": null,
+                    "prefix": "",
+                    "tag": []
+                  }
+                ],
+                "id": "bounded-lab-artifacts",
+                "noncurrent_version_expiration": [
+                  {
+                    "newer_noncurrent_versions": null,
+                    "noncurrent_days": 7
+                  }
+                ],
+                "noncurrent_version_transition": [],
+                "prefix": "",
+                "status": "Enabled",
+                "transition": []
+              }
+            ],
+            "timeouts": null,
+            "transition_default_minimum_object_size": "all_storage_classes_128K"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1"
+          },
+          "dependencies": [
+            "aws_s3_bucket.artifacts"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_policy",
+      "name": "tls",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "id": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "policy": "{\"Statement\":[{\"Action\":\"s3:*\",\"Condition\":{\"Bool\":{\"aws:SecureTransport\":\"false\"}},\"Effect\":\"Deny\",\"Principal\":\"*\",\"Resource\":[\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline\",\"arn:aws:s3:::opsflow-lab-952078551971-ap-south-1-pipeline/*\"]}],\"Version\":\"2012-10-17\"}",
+            "region": "ap-south-1"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.artifacts"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "artifacts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "block_public_acls": true,
+            "block_public_policy": true,
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "id": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "ignore_public_acls": true,
+            "region": "ap-south-1",
+            "restrict_public_buckets": true,
+            "skip_destroy": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.artifacts"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_server_side_encryption_configuration",
+      "name": "artifacts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "expected_bucket_owner": "",
+            "id": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1",
+            "rule": [
+              {
+                "apply_server_side_encryption_by_default": [
+                  {
+                    "kms_master_key_id": "",
+                    "sse_algorithm": "AES256"
+                  }
+                ],
+                "blocked_encryption_types": [
+                  "SSE-C"
+                ],
+                "bucket_key_enabled": false
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "account_id": "952078551971",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.artifacts"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_versioning",
+      "name": "artifacts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "expected_bucket_owner": "",
+            "id": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "mfa": null,
+            "region": "ap-south-1",
+            "versioning_configuration": [
+              {
+                "mfa_delete": "Disabled",
+                "status": "Enabled"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "account_id": "952078551971",
+            "bucket": "opsflow-lab-952078551971-ap-south-1-pipeline",
+            "region": "ap-south-1"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.artifacts"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:security-group/sg-043e8abab9fd9b489",
+            "description": "CodeBuild CD egress, no inbound access",
+            "egress": [],
+            "id": "sg-043e8abab9fd9b489",
+            "ingress": [],
+            "name": "opsflow-lab-ci-deploy",
+            "name_prefix": "",
+            "owner_id": "952078551971",
+            "region": "ap-south-1",
+            "revoke_rules_on_delete": false,
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0436dcec20eee001b"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "sg-043e8abab9fd9b489",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:subnet/subnet-02afa545941e1487d",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-south-1a",
+            "availability_zone_id": "aps1-az1",
+            "cidr_block": "10.40.64.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-02afa545941e1487d",
+            "ipv4_ipam_pool_id": null,
+            "ipv4_netmask_length": null,
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_ipam_pool_id": null,
+            "ipv6_native": false,
+            "ipv6_netmask_length": null,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "952078551971",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "region": "ap-south-1",
+            "tags": {
+              "Name": "opsflow-lab-ci-deploy"
+            },
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Name": "opsflow-lab-ci-deploy",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0436dcec20eee001b"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "subnet-02afa545941e1487d",
+            "region": "ap-south-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "data.aws_subnet.public",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_vpc_security_group_egress_rule",
+      "name": "deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:security-group-rule/sgr-094109b5e998e4d5d",
+            "cidr_ipv4": "0.0.0.0/0",
+            "cidr_ipv6": null,
+            "description": null,
+            "from_port": 443,
+            "id": "sgr-094109b5e998e4d5d",
+            "ip_protocol": "tcp",
+            "prefix_list_id": null,
+            "referenced_security_group_id": null,
+            "region": "ap-south-1",
+            "security_group_id": "sg-043e8abab9fd9b489",
+            "security_group_rule_id": "sgr-094109b5e998e4d5d",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "to_port": 443
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "sgr-094109b5e998e4d5d",
+            "region": "ap-south-1"
+          },
+          "dependencies": [
+            "aws_security_group.deploy",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_vpc_security_group_ingress_rule",
+      "name": "eks_from_deploy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:952078551971:security-group-rule/sgr-0e8426ccc5a5a22dd",
+            "cidr_ipv4": null,
+            "cidr_ipv6": null,
+            "description": null,
+            "from_port": 443,
+            "id": "sgr-0e8426ccc5a5a22dd",
+            "ip_protocol": "tcp",
+            "prefix_list_id": null,
+            "referenced_security_group_id": "sg-043e8abab9fd9b489",
+            "region": "ap-south-1",
+            "security_group_id": "sg-05fc1c8c354758701",
+            "security_group_rule_id": "sgr-0e8426ccc5a5a22dd",
+            "tags": null,
+            "tags_all": {
+              "Environment": "lab",
+              "ManagedBy": "terraform",
+              "Phase": "9",
+              "Project": "opsflow"
+            },
+            "to_port": 443
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "952078551971",
+            "id": "sgr-0e8426ccc5a5a22dd",
+            "region": "ap-south-1"
+          },
+          "dependencies": [
+            "aws_security_group.deploy",
+            "data.aws_eks_cluster.existing",
+            "data.terraform_remote_state.eks"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": [
+    {
+      "object_kind": "var",
+      "config_addr": "var.aws_account_id",
+      "status": "pass",
+      "objects": [
+        {
+          "object_addr": "var.aws_account_id",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "object_kind": "var",
+      "config_addr": "var.github_repository",
+      "status": "pass",
+      "objects": [
+        {
+          "object_addr": "var.github_repository",
+          "status": "pass"
+        }
+      ]
+    }
+  ]
+}
+

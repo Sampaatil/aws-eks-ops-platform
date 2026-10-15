@@ -2,7 +2,7 @@ resource "aws_ecr_repository" "app" {
   for_each             = toset(["backend", "frontend"])
   name                 = "${local.prefix}-${each.key}"
   image_tag_mutability = "IMMUTABLE"
-  force_delete         = false
+  force_delete         = true
   encryption_configuration {
     encryption_type = "AES256"
   }
