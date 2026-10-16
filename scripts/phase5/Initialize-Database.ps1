@@ -63,6 +63,7 @@ try {
   Assert-NativeSuccess 'Role creation job'
   # Master job and temporary master secret must disappear before leaving this stage.
   kubectl --context $Context delete job opsflow-create-app-role -n opsflow --wait=true
+  
   Assert-NativeSuccess 'Bootstrap job cleanup'
   kubectl --context $Context delete secret opsflow-rds-bootstrap -n opsflow
   Assert-NativeSuccess 'Bootstrap secret cleanup'

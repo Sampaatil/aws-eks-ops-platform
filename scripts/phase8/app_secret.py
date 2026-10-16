@@ -19,9 +19,18 @@ def kubectl(context, args, payload=None):
     result = subprocess.run(
         ['kubectl', '--context', context, *args],
         input=None if payload is None else json.dumps(payload),
-        capture_output=True, text=True, check=False)
+        capture_output=True,
+        text=True,
+        check=False
+    )
+
     if result.returncode:
-        raise Stop('kubectl failed; inspect target/RBAC separately. Sensitive stderr suppressed.')
+        raise Stop(
+            f'kubectl command failed: {" ".join(args)} '
+            f'(exit code {result.returncode}). '
+            'Sensitive stderr suppressed.'
+        )
+
     return json.loads(result.stdout) if result.stdout.strip() else None
 
 
@@ -68,7 +77,7 @@ def main():
     a = p.parse_args()
     if not re.fullmatch(r'\d{12}', a.account):
         raise Stop('Invalid expected account.')
-    prefix = f'arn:aws:secretsmanager:{a.region}:{a.account}:secret:opsflow/lab/database-app-'
+    prefix = f'arn:aws:secretsmanager:{a.region}:{a.account}:secret:opsflownew/lab/database-app-'
     if not a.secret_arn.startswith(prefix) or not re.fullmatch(r'[A-Za-z0-9]{6}', a.secret_arn[len(prefix):]):
         raise Stop('Use the exact Terraform app-secret ARN in the intended account/region.')
     import boto3

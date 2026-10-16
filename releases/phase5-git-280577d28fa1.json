@@ -1,0 +1,15 @@
+{
+    "releaseTag":  "git-280577d28fa1",
+    "gitCommit":  "280577d28fa13cda0caecb68704057d681ed7795",
+    "awsRegion":  "ap-south-1",
+    "backend":  {
+                    "repository":  "opsflow-lab-backend",
+                    "image":  "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-backend@sha256:c5dc939f66ea1da92a073be338db2a1dcedbc248aa9ff31ecd81522ab8fefc14",
+                    "digest":  "sha256:c5dc939f66ea1da92a073be338db2a1dcedbc248aa9ff31ecd81522ab8fefc14"
+                },
+    "frontend":  {
+                     "repository":  "opsflow-lab-frontend",
+                     "image":  "952078551971.dkr.ecr.ap-south-1.amazonaws.com/opsflow-lab-frontend@sha256:d088fd91877b1a31d9f5959e94edc1b2e67b3f73af7c1d3a32ecca8ce43a0fa8",
+                     "digest":  "sha256:d088fd91877b1a31d9f5959e94edc1b2e67b3f73af7c1d3a32ecca8ce43a0fa8"
+                 }
+}
